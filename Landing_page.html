@@ -62,8 +62,9 @@
             margin-right: 10px;
             margin-bottom: 9px;
             opacity: 0.7;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease;
             animation: navLogoAnimation 1s ease-out forwards;
+            max-height: 100%;
         }
 
         .nav-logo:hover {
@@ -709,8 +710,9 @@
             }
 
             .nav-logo {
-                height: 40px;
+                height: 60px;
                 margin-right: 10px;
+                margin-bottom: 5px;
             }
 
             .nav-links {
@@ -721,6 +723,37 @@
             .nav-links li:nth-child(3),
             .nav-links li:nth-child(4) {
                 display: none;
+            }
+        }
+
+        /* Additional media queries for smaller devices */
+        @media (max-width: 576px) {
+            nav {
+                height: 60px;
+            }
+
+            .nav-logo {
+                height: 50px;
+                margin-bottom: 3px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            nav {
+                height: 55px;
+            }
+
+            .nav-logo {
+                height: 35px;
+                margin-bottom: 2px;
+            }
+
+            .nav-container {
+                padding: 0 8px;
             }
         }
 
