@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatBotName - Intelligent Conversations</title>
+    <script>
+        // Add preload class to body to prevent animations from running too early
+        document.documentElement.classList.add('preload');
+    </script>
     <style>
         /* Reset and Base Styles */
         * {
@@ -35,7 +39,7 @@
             top: 0;
             z-index: 100;
             width: 100%;
-            height: 44px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,7 +52,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0;
+            padding: 0 15px;
+        }
+
+        .nav-logo {
+            height: 30px;
+            width: auto;
+            margin-right: 20px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            animation: navLogoAnimation 1s ease-out forwards;
+        }
+
+        .nav-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes navLogoAnimation {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 0.8; }
         }
 
         .nav-links {
@@ -57,8 +80,9 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            width: 100%;
-            justify-content: space-around;
+            flex: 1;
+            justify-content: flex-end;
+            gap: 20px;
         }
 
         .nav-links li {
@@ -633,8 +657,15 @@
             100% { transform: scale(1); opacity: 0.8; }
         }
 
-        .hero-image.fade-in.appear img {
+        .animated-logo {
             animation: logoAnimation 1.2s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* Prevent animations before page loads */
+        .preload .animated-logo,
+        .preload .nav-logo {
+            animation: none;
         }
 
         .stagger-delay-1 { transition-delay: 0.1s; }
@@ -658,9 +689,18 @@
                 font-size: 36px;
             }
 
-            .nav-links {
-                justify-content: space-between;
+            .nav-container {
                 padding: 0 10px;
+            }
+
+            .nav-logo {
+                height: 25px;
+                margin-right: 10px;
+            }
+
+            .nav-links {
+                justify-content: flex-end;
+                gap: 10px;
             }
 
             .nav-links li:nth-child(3),
@@ -848,6 +888,7 @@
 <!-- Navigation -->
 <nav>
     <div class="nav-container">
+        <img src="Logo.png" alt="Company Logo" class="nav-logo">
         <ul class="nav-links">
             <li><a href="#benefits">Benefits</a></li>
             <li><a href="#features">Features</a></li>
@@ -1122,6 +1163,9 @@
 <!-- Animation Script -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Remove preload class to allow animations to run
+        document.documentElement.classList.remove('preload');
+
         // Update sign-up links to point to the dedicated sign-up page
         const signupButtons = document.querySelectorAll('.nav-cta, .cta-button');
 
