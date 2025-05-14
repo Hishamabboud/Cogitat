@@ -170,6 +170,18 @@
             opacity: 0.8; /* Makes the logo semi-transparent to blend with background */
             mix-blend-mode: multiply; /* Blends the logo with the background */
             transition: all 0.5s ease; /* Smooth transition for hover effects */
+            position: relative; /* For scroll-based transformations */
+        }
+
+        /* Logo scroll states */
+        .logo-smaller {
+            transform: scale(0.7);
+            opacity: 0.6;
+        }
+
+        .logo-hidden {
+            transform: scale(0.5);
+            opacity: 0;
         }
 
         .hero-image img:hover {
@@ -1165,10 +1177,55 @@
             }
         }
 
-        window.addEventListener('scroll', highlightNavOnScroll);
+        // Logo scroll behavior
+        const logo = document.querySelector('.animated-logo');
+        let lastScrollTop = 0;
+
+        function handleLogoScroll() {
+            const scrollTop = window.scrollY;
+            const scrollThreshold = 200; // When to start shrinking
+            const hideThreshold = 500;   // When to hide completely
+
+            // Determine scroll direction
+            const scrollingDown = scrollTop > lastScrollTop;
+
+            // Apply appropriate classes based on scroll position and direction
+            if (scrollingDown) {
+                // Scrolling down
+                if (scrollTop > hideThreshold) {
+                    logo.classList.add('logo-hidden');
+                    logo.classList.remove('logo-smaller');
+                } else if (scrollTop > scrollThreshold) {
+                    logo.classList.add('logo-smaller');
+                    logo.classList.remove('logo-hidden');
+                } else {
+                    logo.classList.remove('logo-smaller', 'logo-hidden');
+                }
+            } else {
+                // Scrolling up - make logo reappear
+                if (scrollTop < hideThreshold) {
+                    logo.classList.remove('logo-hidden');
+
+                    if (scrollTop > scrollThreshold) {
+                        logo.classList.add('logo-smaller');
+                    } else {
+                        logo.classList.remove('logo-smaller');
+                    }
+                }
+            }
+
+            // Save current scroll position for next comparison
+            lastScrollTop = scrollTop;
+        }
+
+        window.addEventListener('scroll', function() {
+            highlightNavOnScroll();
+            handleLogoScroll();
+        });
 
         // Call once on page load
         highlightNavOnScroll();
+        handleLogoScroll();
 
         // Fade-in animations
         const fadeElements = document.querySelectorAll('.fade-in');
