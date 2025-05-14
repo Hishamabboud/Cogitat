@@ -896,13 +896,210 @@
                 font-size: 16px;
             }
         }
+
+        /* Heartbeat Effect Styles */
+        .heartbeat-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heartbeat-section::before,
+        .heartbeat-section::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #4f1584, #1840a0, #a61082);
+            z-index: 1;
+            opacity: 0;
+            transform-origin: center;
+            will-change: transform, opacity, box-shadow;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+            animation: heartbeatPulse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        .heartbeat-section::before {
+            top: 0;
+            animation-name: heartbeatPulse, heartbeatFlowTop;
+            animation-duration: 4s, 15s;
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-iteration-count: infinite, infinite;
+        }
+
+        .heartbeat-section::after {
+            bottom: 0;
+            animation-name: heartbeatPulse, heartbeatFlowBottom;
+            animation-duration: 4s, 15s;
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-iteration-count: infinite, infinite;
+        }
+
+        @keyframes heartbeatPulse {
+            0%, 100% {
+                opacity: 0.15;
+                transform: scaleY(1);
+                box-shadow: 0 0 0 rgba(79, 21, 132, 0);
+            }
+            25% {
+                opacity: 0.3;
+                transform: scaleY(1.33);
+                box-shadow: 0 0 8px rgba(79, 21, 132, 0.2);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scaleY(1.67);
+                box-shadow: 0 0 12px rgba(79, 21, 132, 0.3);
+            }
+            75% {
+                opacity: 0.3;
+                transform: scaleY(1.33);
+                box-shadow: 0 0 8px rgba(79, 21, 132, 0.2);
+            }
+        }
+
+        @keyframes heartbeatFlowTop {
+            0% {
+                background: linear-gradient(to right, 
+                    rgba(79, 21, 132, 0.05), 
+                    rgba(24, 64, 160, 0.3), 
+                    rgba(166, 16, 130, 0.05));
+                box-shadow: 0 0 15px 3px rgba(79, 21, 132, 0.15);
+            }
+            25% {
+                background: linear-gradient(to right, 
+                    rgba(166, 16, 130, 0.05), 
+                    rgba(79, 21, 132, 0.3), 
+                    rgba(24, 64, 160, 0.05));
+                box-shadow: 0 0 15px 3px rgba(166, 16, 130, 0.15);
+            }
+            50% {
+                background: linear-gradient(to right, 
+                    rgba(24, 64, 160, 0.05), 
+                    rgba(166, 16, 130, 0.3), 
+                    rgba(79, 21, 132, 0.05));
+                box-shadow: 0 0 15px 3px rgba(24, 64, 160, 0.15);
+            }
+            75% {
+                background: linear-gradient(to right, 
+                    rgba(79, 21, 132, 0.05), 
+                    rgba(24, 64, 160, 0.3), 
+                    rgba(166, 16, 130, 0.05));
+                box-shadow: 0 0 15px 3px rgba(79, 21, 132, 0.15);
+            }
+            100% {
+                background: linear-gradient(to right, 
+                    rgba(79, 21, 132, 0.05), 
+                    rgba(24, 64, 160, 0.3), 
+                    rgba(166, 16, 130, 0.05));
+                box-shadow: 0 0 15px 3px rgba(79, 21, 132, 0.15);
+            }
+        }
+
+        @keyframes heartbeatFlowBottom {
+            0% {
+                background: linear-gradient(to right, 
+                    rgba(166, 16, 130, 0.05), 
+                    rgba(79, 21, 132, 0.3), 
+                    rgba(24, 64, 160, 0.05));
+                box-shadow: 0 0 15px 3px rgba(166, 16, 130, 0.15);
+            }
+            25% {
+                background: linear-gradient(to right, 
+                    rgba(24, 64, 160, 0.05), 
+                    rgba(166, 16, 130, 0.3), 
+                    rgba(79, 21, 132, 0.05));
+                box-shadow: 0 0 15px 3px rgba(24, 64, 160, 0.15);
+            }
+            50% {
+                background: linear-gradient(to right, 
+                    rgba(79, 21, 132, 0.05), 
+                    rgba(24, 64, 160, 0.3), 
+                    rgba(166, 16, 130, 0.05));
+                box-shadow: 0 0 15px 3px rgba(79, 21, 132, 0.15);
+            }
+            75% {
+                background: linear-gradient(to right, 
+                    rgba(166, 16, 130, 0.05), 
+                    rgba(79, 21, 132, 0.3), 
+                    rgba(24, 64, 160, 0.05));
+                box-shadow: 0 0 15px 3px rgba(166, 16, 130, 0.15);
+            }
+            100% {
+                background: linear-gradient(to right, 
+                    rgba(166, 16, 130, 0.05), 
+                    rgba(79, 21, 132, 0.3), 
+                    rgba(24, 64, 160, 0.05));
+                box-shadow: 0 0 15px 3px rgba(166, 16, 130, 0.15);
+            }
+        }
+
+        /* Delay for each section to create flowing effect */
+        /* Top side delays - varied for more natural flow */
+        nav.heartbeat-section::before {
+            animation-delay: 0s, 0s;
+        }
+        .hero.heartbeat-section::before {
+            animation-delay: 0.4s, 0.4s;
+        }
+        .benefits.heartbeat-section::before {
+            animation-delay: 0.9s, 0.9s;
+        }
+        .features.heartbeat-section::before {
+            animation-delay: 1.7s, 1.7s;
+        }
+        .integrations.heartbeat-section::before {
+            animation-delay: 2.2s, 2.2s;
+        }
+        .pricing.heartbeat-section::before {
+            animation-delay: 2.8s, 2.8s;
+        }
+        .cta.heartbeat-section::before {
+            animation-delay: 3.3s, 3.3s;
+        }
+        footer.heartbeat-section::before {
+            animation-delay: 3.7s, 3.7s;
+        }
+
+        /* Bottom side delays - varied and offset from top side */
+        nav.heartbeat-section::after {
+            animation-delay: 0.2s, 0.2s;
+        }
+        .hero.heartbeat-section::after {
+            animation-delay: 0.7s, 0.7s;
+        }
+        .benefits.heartbeat-section::after {
+            animation-delay: 1.3s, 1.3s;
+        }
+        .features.heartbeat-section::after {
+            animation-delay: 1.9s, 1.9s;
+        }
+        .integrations.heartbeat-section::after {
+            animation-delay: 2.5s, 2.5s;
+        }
+        .pricing.heartbeat-section::after {
+            animation-delay: 3.1s, 3.1s;
+        }
+        .cta.heartbeat-section::after {
+            animation-delay: 3.5s, 3.5s;
+        }
+        footer.heartbeat-section::after {
+            animation-delay: 3.9s, 3.9s;
+        }
+
+        /* Prevent animations before page loads */
+        .preload .heartbeat-section::before,
+        .preload .heartbeat-section::after {
+            animation: none;
+        }
     </style>
 </head>
 <body>
 <!-- Navigation -->
-<nav>
+<nav class="heartbeat-section">
     <div class="nav-container">
-        <img src="Logo.png" alt="Company Logo" class="nav-logo">
+        <img src="LogoH.png" alt="Company Logo" class="nav-logo">
         <ul class="nav-links">
             <li><a href="#benefits">Benefits</a></li>
             <li><a href="#features">Features</a></li>
@@ -914,7 +1111,7 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero heartbeat-section">
     <h1 class="fade-in">An AI Guide That Thinks Ahead, So You Don't Have To</h1>
     <p class="fade-in stagger-delay-1">Instantly answer questions, guide visitors, and turn interest into action — even while you sleep.</p>
     <div class="hero-image fade-in stagger-delay-3">
@@ -928,7 +1125,7 @@
 </section>
 
 <!-- Benefits Section -->
-<section class="features benefits" id="benefits">
+<section class="features benefits heartbeat-section" id="benefits">
     <h2 class="section-title fade-in">Supercharge Growth with an Intelligent AI Assistant</h2>
     <div class="features-grid">
         <div class="feature-card fade-in">
@@ -986,7 +1183,7 @@
 </section>
 
 <!-- Features Section -->
-<section class="features" id="features">
+<section class="features heartbeat-section" id="features">
     <h2 class="section-title fade-in">Everything You Need for a Smart AI Assistant</h2>
     <div class="features-grid">
         <div class="feature-card fade-in">
@@ -1056,7 +1253,7 @@
 </section>
 
 <!-- Integrations Section -->
-<section class="features integrations" id="integrations">
+<section class="features integrations heartbeat-section" id="integrations">
     <h2 class="section-title fade-in">Seamless Integrations</h2>
     <p class="section-subtitle fade-in">Connect AI Chat with the tools you already use to enhance your workflow.</p>
     <div class="features-grid">
@@ -1089,7 +1286,7 @@
     </div>
 </section>
 
-<section class="features pricing" id="pricing">
+<section class="features pricing heartbeat-section" id="pricing">
     <h2 class="section-title fade-in">Flexible Pricing Tailored to Your Needs</h2>
     <p class="section-subtitle fade-in">We offer customized pricing based on your business size, usage, and support requirements. Let's find the right solution together.</p>
 
@@ -1149,14 +1346,14 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="cta" id="contact">
+<section class="cta heartbeat-section" id="contact">
     <h2 class="fade-in">Ready to Experience the Future of Conversation?</h2>
     <p class="fade-in stagger-delay-1">Get started today and see the difference intelligent assistance can make.</p>
     <a href="#" class="cta-button fade-in stagger-delay-3">Contact Us Today</a>
 </section>
 
 
-<footer>
+<footer class="heartbeat-section">
     <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
