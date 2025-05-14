@@ -161,9 +161,20 @@
         }
 
         .hero-image img {
-            width: 100%;
+            width: 200px; /* Reduced from 100% to make the logo much smaller */
+            max-width: 30%; /* Ensures responsiveness */
             border-radius: 18px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: block; /* Helps with centering */
+            margin: 0 auto; /* Centers the image */
+            opacity: 0.8; /* Makes the logo semi-transparent to blend with background */
+            mix-blend-mode: multiply; /* Blends the logo with the background */
+            transition: all 0.5s ease; /* Smooth transition for hover effects */
+        }
+
+        .hero-image img:hover {
+            opacity: 1;
+            mix-blend-mode: normal;
         }
 
         /* Features Section */
@@ -603,6 +614,17 @@
             transform: translateY(0);
         }
 
+        /* Logo Animation */
+        @keyframes logoAnimation {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        .hero-image.fade-in.appear img {
+            animation: logoAnimation 1.2s ease-out forwards;
+        }
+
         .stagger-delay-1 { transition-delay: 0.1s; }
         .stagger-delay-2 { transition-delay: 0.2s; }
         .stagger-delay-3 { transition-delay: 0.3s; }
@@ -829,7 +851,7 @@
     <h1 class="fade-in">An AI Guide That Thinks Ahead, So You Don't Have To</h1>
     <p class="fade-in stagger-delay-1">Instantly answer questions, guide visitors, and turn interest into action — even while you sleep.</p>
     <div class="hero-image fade-in stagger-delay-3">
-        <img src="Logo.png" alt="Company Logo">
+        <img src="Logo.png" alt="Company Logo" class="animated-logo">
     </div>
     <div class="section-connector fade-in stagger-delay-4">
         <div class="connector-line"></div>
