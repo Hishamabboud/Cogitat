@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company Information Form - ChatBotName</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("8dyMDQiM9-QG7THmT");
+    })();
+  </script>
   <style>
     /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: "General Sals", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     html {
@@ -18,13 +24,17 @@
     }
 
     body {
-      color: #f5f5f7;
-      background-color: #000000;
+      color: #1d1d1f;
+      background-color: #ffffff;
       line-height: 1.5;
       overflow-x: hidden;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: "General Sals", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Cal sals", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     /* Navigation */
@@ -95,7 +105,7 @@
       justify-content: center;
       min-height: calc(100vh - 44px);
       padding: 60px 20px;
-      background: linear-gradient(180deg, #000 0%, #1d1d1f 100%);
+      background: linear-gradient(180deg, #f5f0fa 0%, #ffffff 100%);
       position: relative;
     }
 
@@ -106,21 +116,22 @@
       left: 0;
       right: 0;
       height: 100%;
-      background: radial-gradient(circle at 50% 30%, rgba(0, 113, 227, 0.1), transparent 70%);
+      background: radial-gradient(circle at 50% 30%, rgba(79, 21, 132, 0.1), transparent 70%);
       z-index: 0;
     }
 
     .signup-container {
-      background-color: rgba(29, 29, 31, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-radius: 20px;
       width: 100%;
       max-width: 450px;
       padding: 40px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 40px rgba(79, 21, 132, 0.15);
       z-index: 1;
       animation: fadeIn 0.6s ease-out;
+      border: 1px solid rgba(79, 21, 132, 0.1);
     }
 
     @keyframes fadeIn {
@@ -134,7 +145,7 @@
     }
 
     .signup-header h1 {
-      color: #f5f5f7;
+      color: #4f1584;
       font-size: 32px;
       font-weight: 600;
       margin-bottom: 15px;
@@ -160,16 +171,16 @@
     }
 
     .form-group label {
-      color: #f5f5f7;
+      color: #1d1d1f;
       font-size: 14px;
       font-weight: 500;
     }
 
-    .form-group input, .form-group select {
-      background-color: #2d2d2f;
-      border: 2px solid #3d3d3f;
+    .form-group input, .form-group select, .form-group textarea {
+      background-color: #f5f5f7;
+      border: 2px solid #e5e5e7;
       border-radius: 10px;
-      color: #f5f5f7;
+      color: #1d1d1f;
       padding: 15px;
       font-size: 16px;
       transition: all 0.2s ease;
@@ -177,9 +188,9 @@
       width: 100%;
     }
 
-    .form-group input:focus, .form-group select:focus {
-      border-color: #0071e3;
-      box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.3);
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #4f1584;
+      box-shadow: 0 0 0 2px rgba(79, 21, 132, 0.2);
     }
 
     .form-group select {
@@ -191,7 +202,7 @@
     }
 
     .signup-button {
-      background-color: #0071e3;
+      background-color: #4f1584;
       color: white;
       border: none;
       border-radius: 980px;
@@ -204,9 +215,9 @@
     }
 
     .signup-button:hover {
-      background-color: #0077ED;
+      background-color: #a61082;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+      box-shadow: 0 4px 12px rgba(79, 21, 132, 0.4);
     }
 
     .signup-footer {
@@ -217,13 +228,13 @@
     }
 
     .signup-footer a {
-      color: #0071e3;
+      color: #4f1584;
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .signup-footer a:hover {
-      color: #0077ED;
+      color: #a61082;
       text-decoration: underline;
     }
 
@@ -234,11 +245,34 @@
     }
 
     .form-message.success {
-      color: #4cd964;
+      color: #4f1584;
     }
 
     .form-message.error {
       color: #ff3b30;
+    }
+
+    .submitting .signup-button {
+      position: relative;
+      color: transparent;
+    }
+
+    .submitting .signup-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spinner 0.8s linear infinite;
+    }
+
+    @keyframes spinner {
+      to {transform: rotate(360deg);}
     }
 
     .back-link {
@@ -247,7 +281,7 @@
       left: 20px;
       display: flex;
       align-items: center;
-      color: #f5f5f7;
+      color: #4f1584;
       text-decoration: none;
       font-size: 14px;
       opacity: 0.8;
@@ -275,7 +309,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background-color: #3d3d3f;
+      background-color: #e5e5e7;
     }
 
     .form-divider span {
@@ -296,15 +330,16 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background-color: #2d2d2f;
-      border: 1px solid #3d3d3f;
+      background-color: #f5f5f7;
+      border: 1px solid #e5e5e7;
       transition: all 0.2s;
       cursor: pointer;
     }
 
     .social-button:hover {
       transform: translateY(-2px);
-      background-color: #3d3d3f;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .social-icon {
@@ -355,7 +390,8 @@
       }
 
       .form-group input,
-      .form-group select {
+      .form-group select,
+      .form-group textarea {
         padding: 12px;
         font-size: 15px;
       }
@@ -374,7 +410,7 @@
       <li><a href="Landing_page.html">Home</a></li>
       <li><a href="Landing_page.html#features">Features</a></li>
       <li><a href="Landing_page.html#pricing">Pricing</a></li>
-      <li><a href="Landing_page.html#benefits">Testimonials</a></li>
+      <li><a href="Landing_page.html#benefits">Why Cogitat</a></li>
       <li><a href="#"></a></li>
     </ul>
   </div>
@@ -410,7 +446,7 @@
 
       <div class="form-group">
         <label for="additionalDetails">Additional Details</label>
-        <textarea id="additionalDetails" name="additionalDetails" placeholder="Tell us more about your needs..." rows="4" style="resize: vertical; background-color: #2d2d2f; border: 2px solid #3d3d3f; border-radius: 10px; color: #f5f5f7; padding: 15px; font-size: 16px; transition: all 0.2s ease; outline: none; width: 100%;"></textarea>
+        <textarea id="additionalDetails" name="additionalDetails" placeholder="Tell us more about your needs..." rows="4" style="resize: vertical;"></textarea>
       </div>
 
 
@@ -443,31 +479,65 @@
       e.preventDefault();
 
       // Basic form validation
+      const fullName = document.getElementById('fullName').value;
       const email = document.getElementById('email').value;
       const companyName = document.getElementById('companyName').value;
+      const additionalDetails = document.getElementById('additionalDetails').value;
 
-      if (!email || !companyName) {
+      if (!fullName || !email || !companyName) {
         formError.textContent = 'Please fill in all required fields.';
         formError.style.display = 'block';
         formSuccess.style.display = 'none';
         return;
       }
 
-      // Simulate form submission
+      // Show loading state
       signupForm.classList.add('submitting');
+      formError.style.display = 'none';
 
-      // Simulate API call
-      setTimeout(() => {
-        // Success response
-        formSuccess.style.display = 'block';
-        formError.style.display = 'none';
-        signupForm.classList.remove('submitting');
+      // Prepare template parameters
+      const templateParams = {
+        to_email: 'Hello@cogitatai.com',
+        from_name: fullName,
+        from_email: email,
+        company_name: companyName,
+        message: additionalDetails || 'No additional details provided.'
+      };
 
-        // Redirect after success
-        setTimeout(() => {
-          window.location.href = 'index.html?form=success';
-        }, 2000);
-      }, 1000);
+      // Send email using EmailJS
+      // IMPORTANT: Replace the service and template IDs with your actual EmailJS IDs
+      // The service ID comes from your EmailJS email service (e.g., Gmail, Outlook)
+      // The template ID comes from your custom email template in EmailJS
+      emailjs.send(
+              'service_9y9s0r6', // Replace with your EmailJS service ID
+              'template_251ljbo', // Replace with your EmailJS template ID
+              templateParams
+      )
+              .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+
+                // Show success message
+                formSuccess.style.display = 'block';
+                formError.style.display = 'none';
+                signupForm.classList.remove('submitting');
+
+                // Reset form
+                signupForm.reset();
+
+                // Redirect after success
+                setTimeout(() => {
+                  window.location.href = 'Landing_page.html?form=success';
+                }, 2000);
+              })
+              .catch(function(error) {
+                console.log('FAILED...', error);
+
+                // Show error message
+                formError.textContent = 'There was an error sending your request. Please try again later.';
+                formError.style.display = 'block';
+                formSuccess.style.display = 'none';
+                signupForm.classList.remove('submitting');
+              });
     });
   });
 </script>
