@@ -58,6 +58,19 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 15px;
+            position: relative;
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
         }
 
         .nav-logo {
@@ -102,7 +115,7 @@
         .nav-links a {
             color: #1d1d1f;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 15px;
             font-weight: 400;
             opacity: 0.8;
             transition: opacity 0.3s;
@@ -163,7 +176,7 @@
 
         .hero p {
             font-size: 26px;
-            color: #86868b;
+            color: #1d1d1f; /* Changed from #86868b to black */
             max-width: 800px;
             margin: 0 auto 30px;
         }
@@ -950,29 +963,6 @@
             }
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .pricing .section-title {
-                font-size: 36px;
-            }
-
-            .section-subtitle {
-                font-size: 18px;
-            }
-
-            .custom-pricing-card {
-                padding: 40px 25px;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .custom-pricing-card p {
-                font-size: 16px;
-            }
-        }
-
         /* Heartbeat Effect Styles */
         .heartbeat-section {
             position: relative;
@@ -1169,163 +1159,124 @@
         .preload .heartbeat-section::after {
             animation: none;
         }
-    </style>
 
-    <!-- Mobile Menu Styles -->
-    <style>
-    /* Mobile Menu Styles */
-    .nav-container {
-        position: relative;
-    }
-
-    .nav-left {
-        display: flex;
-        align-items: center;
-    }
-
-    .nav-right {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        justify-content: flex-end;
-    }
-
-    .mobile-menu-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        cursor: pointer;
-        z-index: 200;
-    }
-
-    .mobile-menu-toggle span {
-        display: block;
-        height: 3px;
-        width: 100%;
-        background-color: #1d1d1f;
-        border-radius: 3px;
-        transition: all 0.3s ease;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .nav-container {
-            padding: 0 20px;
-        }
-
+        /* Mobile Menu Styles */
         .mobile-menu-toggle {
-            display: flex;
-        }
-
-        .nav-right {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background-color: rgba(242, 242, 242, 0.98);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            z-index: 100;
-            transition: right 0.3s ease;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            padding: 100px 20px 40px;
-            overflow-y: auto;
-        }
-
-        .nav-right.active {
-            right: 0;
-        }
-
-        .nav-links {
+            display: none;
             flex-direction: column;
-            width: 100%;
-            gap: 0;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 200;
         }
 
-        .nav-links li {
-            width: 100%;
-            margin: 0;
+        .mobile-menu-toggle span {
             display: block;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-links li:nth-child(3),
-        .nav-links li:nth-child(4) {
-            display: block;
-        }
-
-        .nav-links a {
-            padding: 15px 10px;
+            height: 3px;
             width: 100%;
-            font-size: 16px;
-            opacity: 1;
+            background-color: #1d1d1f;
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
 
-        .nav-links .nav-cta {
-            margin-top: 20px;
-            text-align: center;
-            padding: 12px !important;
-            font-weight: 600;
-        }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
 
-        /* Hamburger menu animation */
-        .mobile-menu-toggle.active span:first-child {
-            transform: translateY(9px) rotate(45deg);
-        }
+            .mobile-menu-toggle {
+                display: flex;
+            }
 
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
+            .nav-right {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: rgba(242, 242, 242, 0.98);
+                backdrop-filter: saturate(180%) blur(20px);
+                -webkit-backdrop-filter: saturate(180%) blur(20px);
+                z-index: 100;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 100px 20px 40px;
+                overflow-y: auto;
+            }
 
-        .mobile-menu-toggle.active span:last-child {
-            transform: translateY(-9px) rotate(-45deg);
-        }
+            .nav-right.active {
+                right: 0;
+            }
 
-        /* Overlay when menu is open */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 90;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
 
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+            .nav-links li {
+                width: 100%;
+                margin: 0;
+                display: block;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                height: auto;
+            }
 
-        /* Logo adjustments */
-        .nav-logo {
-            height: 80px;
-            margin-bottom: 0;
-        }
-    }
+            .nav-links li:nth-child(3),
+            .nav-links li:nth-child(4) {
+                display: block;
+            }
 
-    @media (max-width: 576px) {
-        .nav-logo {
-            height: 75px;
-        }
-    }
+            .nav-links a {
+                padding: 15px 10px;
+                width: 100%;
+                font-size: 16px;
+                opacity: 1;
+                height: auto;
+            }
 
-    @media (max-width: 375px) {
-        .nav-container {
-            padding: 0 15px;
-        }
+            .nav-links .nav-cta {
+                margin-top: 20px;
+                text-align: center;
+                padding: 12px !important;
+                font-weight: 600;
+            }
 
-        .nav-logo {
-            height: 70px;
+            /* Hamburger menu animation */
+            .mobile-menu-toggle.active span:first-child {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:last-child {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            /* Overlay when menu is open */
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 90;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
         }
-    }
     </style>
 </head>
 <body>
@@ -1354,7 +1305,7 @@
 <!-- Hero Section -->
 <section class="hero heartbeat-section">
     <h1 class="fade-in">Your Smartest Hire Yet! An AI That Sells, Supports, and Never Sleeps</h1>
-    <p class="fade-in stagger-delay-1">Cogitat learns your business and handles customer questions instantly, so you don’t need a full-time team.</p>
+    <p class="fade-in stagger-delay-1">Cogitat learns your business and handles customer questions instantly, so you don't need a full-time team.</p>
     <div class="hero-cta fade-in stagger-delay-3">
         <a href="signup.html" class="cta-button demo-button animated-button">Book a Demo</a>
     </div>
@@ -1574,7 +1525,7 @@
                 </div>
             </div>
 
-            <a href="signup.html" class="pricing-cta-button">Get Your Custom Quote</a>
+            <a href="#contact" class="pricing-cta-button">Get Your Custom Quote</a>
         </div>
     </div>
 </section>
