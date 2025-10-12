@@ -1648,7 +1648,7 @@
         <a href="#">About</a>
         <a href="#">Support</a>
     </div>
-    <p class="copyright">© 2025 CogitatAI. All rights reserved.</p>
+    <p class="copyright">© 2025 ChatBotName. All rights reserved.</p>
     <div class="social-media">
         <a href="https://www.instagram.com/cogitatai/" target="_blank" aria-label="Instagram" class="social-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -1969,5 +1969,189 @@
         });
     });
 </script>
+</body>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chatbot Integration</title>
+</head>
+<body>
+<!-- AI Chatbot Integration Script -->
+<div id="ai-chatbot-container"></div>
+
+<script>
+    (function() {
+        // Configuration
+        const config = {
+            clientId: '3',
+            domain: 'demo.local',
+            position: 'bottom-right',
+            theme: 'dark',
+            bubbleColor: '#61177c',
+            welcomeMessage: 'Hello! How can I help you today?'
+        };
+
+        // Create chatbot bubble
+        const bubble = document.createElement('div');
+        bubble.id = 'chatbot-bubble';
+        bubble.innerHTML = '<i class="fas fa-comments"></i>';
+        bubble.style.cssText = `
+                position: fixed;
+                right: 20px;
+                bottom: 20px;
+                width: 60px;
+                height: 60px;
+                background: ${config.bubbleColor};
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                transition: all 0.3s ease;
+            `;
+
+        // Create chat window
+        const chatWindow = document.createElement('div');
+        chatWindow.id = 'chatbot-window';
+        chatWindow.style.cssText = `
+                position: fixed;
+                right: 20px;
+                bottom: 90px;
+                width: 350px;
+                height: 500px;
+                background: ${config.theme === 'dark' ? '#1f2937' : '#ffffff'};
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 9998;
+                display: none;
+                flex-direction: column;
+            `;
+
+        // Chat header
+        const header = document.createElement('div');
+        header.innerHTML = `
+                <div style="padding: 15px; background: ${config.bubbleColor}; color: white; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                    <span>AI Assistant</span>
+                    <button id="close-chat" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px;">&times;</button>
+                </div>
+            `;
+
+        // Chat messages area
+        const messages = document.createElement('div');
+        messages.id = 'chat-messages';
+        messages.style.cssText = `
+                flex: 1;
+                padding: 15px;
+                overflow-y: auto;
+                background: ${config.theme === 'dark' ? '#374151' : '#f9fafb'};
+            `;
+
+        // Add welcome message
+        messages.innerHTML = `
+                <div style="background: ${config.theme === 'dark' ? '#4b5563' : '#e5e7eb'}; padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+                    ${config.welcomeMessage}
+                </div>
+            `;
+
+        // Chat input area
+        const inputArea = document.createElement('div');
+        const borderColor = config.theme === 'dark' ? '#4b5563' : '#e5e7eb';
+        const inputBorderColor = config.theme === 'dark' ? '#4b5563' : '#d1d5db';
+        const inputBgColor = config.theme === 'dark' ? '#374151' : '#ffffff';
+        const inputTextColor = config.theme === 'dark' ? '#ffffff' : '#000000';
+        inputArea.innerHTML = `
+                <div style="padding: 15px; border-top: 1px solid ${borderColor};">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="chat-input" placeholder="Type your message..."
+                               style="flex: 1; padding: 10px; border: 1px solid ${inputBorderColor}; border-radius: 6px; background: ${inputBgColor}; color: ${inputTextColor};">
+                        <button id="send-btn" style="padding: 10px 15px; background: ${config.bubbleColor}; color: white; border: none; border-radius: 6px; cursor: pointer;">Send</button>
+                    </div>
+                </div>
+            `;
+
+        // Assemble chat window
+        chatWindow.appendChild(header);
+        chatWindow.appendChild(messages);
+        chatWindow.appendChild(inputArea);
+
+        // Add to page
+        document.body.appendChild(bubble);
+        document.body.appendChild(chatWindow);
+
+        // Event listeners
+        bubble.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        document.getElementById('close-chat').addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+
+        // Send message functionality
+        async function sendMessage(message) {
+            if (!message.trim()) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.style.cssText = 'text-align: right; margin-bottom: 10px;';
+            userMsg.innerHTML = `<span style="background: ${config.bubbleColor}; color: white; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">${message}</span>`;
+            messages.appendChild(userMsg);
+
+            // Scroll to bottom
+            messages.scrollTop = messages.scrollHeight;
+
+            try {
+                // Always use the production API endpoint
+                const response = await fetch('https://chatbotonline.onrender.com/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Client-ID': config.clientId
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: 'website_' + Date.now()
+                    })
+                });
+
+                const data = await response.json();
+
+                // Add bot response
+                const botMsg = document.createElement('div');
+                botMsg.style.cssText = 'text-align: left; margin-bottom: 10px;';
+                botMsg.innerHTML = `<span style="background: ${config.theme === 'dark' ? '#4b5563' : '#e5e7eb'}; color: ${config.theme === 'dark' ? '#ffffff' : '#000000'}; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">${data.response || 'Sorry, I encountered an error.'}</span>`;
+                messages.appendChild(botMsg);
+
+            } catch (error) {
+                console.error('Chat error:', error);
+                const errorMsg = document.createElement('div');
+                errorMsg.style.cssText = 'text-align: left; margin-bottom: 10px;';
+                errorMsg.innerHTML = `<span style="background: #ef4444; color: white; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">Sorry, I'm having trouble connecting. Please try again.</span>`;
+                messages.appendChild(errorMsg);
+            }
+
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        document.getElementById('send-btn').addEventListener('click', () => {
+            const input = document.getElementById('chat-input');
+            sendMessage(input.value);
+            input.value = '';
+        });
+
+        document.getElementById('chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage(e.target.value);
+                e.target.value = '';
+            }
+        });
+    })();
+</script>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
