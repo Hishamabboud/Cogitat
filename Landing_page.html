@@ -2243,96 +2243,173 @@
 
     <script>
         (function() {
-            // Configuration
+            // Configuration - Updated to match website design
             const config = {
                 clientId: '20',
                 domain: 'cogitatai.com',
                 position: 'bottom-right',
                 theme: 'dark',
-                bubbleColor: '#3a367c',
-                welcomeMessage: ' Welcome to CogitatAI! '
+                bubbleColor: '#ff5600',
+                welcomeMessage: 'Welcome to CogitatAI! How can I help you today?'
             };
 
-            // Create chatbot bubble
+            // Create chatbot bubble with enhanced styling
             const bubble = document.createElement('div');
             bubble.id = 'chatbot-bubble';
             bubble.innerHTML = '<i class="fas fa-comments"></i>';
             bubble.style.cssText = `
                 position: fixed;
-                right: 20px;
-                bottom: 20px;
-                width: 60px;
-                height: 60px;
-                background: ${config.bubbleColor};
+                right: 30px;
+                bottom: 30px;
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
                 cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                box-shadow: 0 8px 24px rgba(255, 86, 0, 0.4);
                 z-index: 9999;
-                transition: all 0.3s ease;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                font-size: 24px;
             `;
 
-            // Create chat window
+            // Add hover effect for bubble
+            bubble.addEventListener('mouseenter', () => {
+                bubble.style.transform = 'scale(1.1) translateY(-4px)';
+                bubble.style.boxShadow = '0 12px 32px rgba(255, 86, 0, 0.6)';
+            });
+            bubble.addEventListener('mouseleave', () => {
+                bubble.style.transform = 'scale(1) translateY(0)';
+                bubble.style.boxShadow = '0 8px 24px rgba(255, 86, 0, 0.4)';
+            });
+
+            // Create chat window with website-matching design
             const chatWindow = document.createElement('div');
             chatWindow.id = 'chatbot-window';
             chatWindow.style.cssText = `
                 position: fixed;
-                right: 20px;
-                bottom: 90px;
-                width: 350px;
-                height: 500px;
-                background: ${config.theme === 'dark' ? '#1f2937' : '#ffffff'};
-                border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                right: 30px;
+                bottom: 110px;
+                width: 380px;
+                height: 550px;
+                background: #0a0a0a;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
                 z-index: 9998;
                 display: none;
                 flex-direction: column;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                overflow: hidden;
             `;
 
-            // Chat header
+            // Chat header with gradient
             const header = document.createElement('div');
             header.innerHTML = `
-                <div style="padding: 15px; background: ${config.bubbleColor}; color: white; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center;">
-                    <span>AI Assistant</span>
-                    <button id="close-chat" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px;">&times;</button>
+                <div style="padding: 20px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div>
+                        <div style="font-size: 18px; font-weight: 600; margin-bottom: 2px;">Cogitat AI</div>
+                        <div style="font-size: 12px; opacity: 0.9;">Always here to help</div>
+                    </div>
+                    <button id="close-chat" style="background: rgba(255, 255, 255, 0.2); border: none; color: white; cursor: pointer; font-size: 22px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">&times;</button>
                 </div>
             `;
 
-            // Chat messages area
+            // Add hover effect for close button
+            setTimeout(() => {
+                const closeBtn = document.getElementById('close-chat');
+                if (closeBtn) {
+                    closeBtn.addEventListener('mouseenter', () => {
+                        closeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+                        closeBtn.style.transform = 'rotate(90deg)';
+                    });
+                    closeBtn.addEventListener('mouseleave', () => {
+                        closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+                        closeBtn.style.transform = 'rotate(0deg)';
+                    });
+                }
+            }, 100);
+
+            // Chat messages area with darker background
             const messages = document.createElement('div');
             messages.id = 'chat-messages';
             messages.style.cssText = `
                 flex: 1;
-                padding: 15px;
+                padding: 20px;
                 overflow-y: auto;
-                background: ${config.theme === 'dark' ? '#374151' : '#f9fafb'};
+                background: #050505;
+                position: relative;
             `;
 
-            // Add welcome message
+            // Custom scrollbar
+            const style = document.createElement('style');
+            style.textContent = `
+                #chat-messages::-webkit-scrollbar {
+                    width: 6px;
+                }
+                #chat-messages::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.05);
+                }
+                #chat-messages::-webkit-scrollbar-thumb {
+                    background: ${config.bubbleColor};
+                    border-radius: 3px;
+                }
+                #chat-messages::-webkit-scrollbar-thumb:hover {
+                    background: #ff6b1a;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Add welcome message with new styling
             messages.innerHTML = `
-                <div style="background: ${config.theme === 'dark' ? '#4b5563' : '#e5e7eb'}; padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px; border-radius: 12px; margin-bottom: 12px; color: #f5f5f7; font-size: 15px; line-height: 1.5;">
                     ${config.welcomeMessage}
                 </div>
             `;
 
-            // Chat input area
+            // Chat input area with matching design
             const inputArea = document.createElement('div');
-            const borderColor = config.theme === 'dark' ? '#4b5563' : '#e5e7eb';
-            const inputBorderColor = config.theme === 'dark' ? '#4b5563' : '#d1d5db';
-            const inputBgColor = config.theme === 'dark' ? '#374151' : '#ffffff';
-            const inputTextColor = config.theme === 'dark' ? '#ffffff' : '#000000';
             inputArea.innerHTML = `
-                <div style="padding: 15px; border-top: 1px solid ${borderColor};">
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="chat-input" placeholder="Type your message..."
-                               style="flex: 1; padding: 10px; border: 1px solid ${inputBorderColor}; border-radius: 6px; background: ${inputBgColor}; color: ${inputTextColor};">
-                        <button id="send-btn" style="padding: 10px 15px; background: ${config.bubbleColor}; color: white; border: none; border-radius: 6px; cursor: pointer;">Send</button>
+                <div style="padding: 20px; background: #0a0a0a; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="text" id="chat-input" placeholder="Ask me anything..."
+                               style="flex: 1; padding: 12px 16px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; background: rgba(255, 255, 255, 0.05); color: #f5f5f7; font-size: 15px; outline: none; transition: all 0.3s ease;">
+                        <button id="send-btn" style="padding: 12px 20px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 86, 0, 0.3);">Send</button>
                     </div>
                 </div>
             `;
+
+            // Add input focus effect
+            setTimeout(() => {
+                const input = document.getElementById('chat-input');
+                const sendBtn = document.getElementById('send-btn');
+
+                if (input) {
+                    input.addEventListener('focus', () => {
+                        input.style.borderColor = config.bubbleColor;
+                        input.style.background = 'rgba(255, 255, 255, 0.08)';
+                    });
+                    input.addEventListener('blur', () => {
+                        input.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        input.style.background = 'rgba(255, 255, 255, 0.05)';
+                    });
+                }
+
+                if (sendBtn) {
+                    sendBtn.addEventListener('mouseenter', () => {
+                        sendBtn.style.transform = 'translateY(-2px)';
+                        sendBtn.style.boxShadow = '0 6px 20px rgba(255, 86, 0, 0.5)';
+                    });
+                    sendBtn.addEventListener('mouseleave', () => {
+                        sendBtn.style.transform = 'translateY(0)';
+                        sendBtn.style.boxShadow = '0 4px 12px rgba(255, 86, 0, 0.3)';
+                    });
+                }
+            }, 100);
 
             // Assemble chat window
             chatWindow.appendChild(header);
@@ -2352,17 +2429,31 @@
                 chatWindow.style.display = 'none';
             });
 
-            // Send message functionality
+            // Send message functionality with enhanced styling
             async function sendMessage(message) {
                 if (!message.trim()) return;
 
-                // Add user message
+                // Add user message with gradient background
                 const userMsg = document.createElement('div');
-                userMsg.style.cssText = 'text-align: right; margin-bottom: 10px;';
-                userMsg.innerHTML = `<span style="background: ${config.bubbleColor}; color: white; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">${message}</span>`;
+                userMsg.style.cssText = 'text-align: right; margin-bottom: 16px; animation: slideInRight 0.3s ease;';
+                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; padding: 12px 16px; border-radius: 12px; display: inline-block; max-width: 75%; font-size: 15px; line-height: 1.5; box-shadow: 0 2px 8px rgba(255, 86, 0, 0.3);">${message}</span>`;
                 messages.appendChild(userMsg);
 
                 // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
+
+                // Add typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.id = 'typing-indicator';
+                typingIndicator.style.cssText = 'text-align: left; margin-bottom: 16px;';
+                typingIndicator.innerHTML = `
+                    <span style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 16px; border-radius: 12px; display: inline-block; color: #a1a1a6; font-size: 15px;">
+                        <span style="animation: pulse 1.5s ease-in-out infinite;">●</span>
+                        <span style="animation: pulse 1.5s ease-in-out 0.2s infinite;">●</span>
+                        <span style="animation: pulse 1.5s ease-in-out 0.4s infinite;">●</span>
+                    </span>
+                `;
+                messages.appendChild(typingIndicator);
                 messages.scrollTop = messages.scrollHeight;
 
                 try {
@@ -2381,22 +2472,67 @@
 
                     const data = await response.json();
 
-                    // Add bot response
+                    // Remove typing indicator
+                    if (typingIndicator.parentNode) {
+                        typingIndicator.remove();
+                    }
+
+                    // Add bot response with new styling
                     const botMsg = document.createElement('div');
-                    botMsg.style.cssText = 'text-align: left; margin-bottom: 10px;';
-                    botMsg.innerHTML = `<span style="background: ${config.theme === 'dark' ? '#4b5563' : '#e5e7eb'}; color: ${config.theme === 'dark' ? '#ffffff' : '#000000'}; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">${data.response || 'Sorry, I encountered an error.'}</span>`;
+                    botMsg.style.cssText = 'text-align: left; margin-bottom: 16px; animation: slideInLeft 0.3s ease;';
+                    botMsg.innerHTML = `<span style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #f5f5f7; padding: 12px 16px; border-radius: 12px; display: inline-block; max-width: 75%; font-size: 15px; line-height: 1.5;">${data.response || 'Sorry, I encountered an error.'}</span>`;
                     messages.appendChild(botMsg);
 
                 } catch (error) {
                     console.error('Chat error:', error);
+
+                    // Remove typing indicator
+                    if (typingIndicator.parentNode) {
+                        typingIndicator.remove();
+                    }
+
                     const errorMsg = document.createElement('div');
-                    errorMsg.style.cssText = 'text-align: left; margin-bottom: 10px;';
-                    errorMsg.innerHTML = `<span style="background: #ef4444; color: white; padding: 8px 12px; border-radius: 12px; display: inline-block; max-width: 80%;">Sorry, I'm having trouble connecting. Please try again.</span>`;
+                    errorMsg.style.cssText = 'text-align: left; margin-bottom: 16px;';
+                    errorMsg.innerHTML = `<span style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 12px 16px; border-radius: 12px; display: inline-block; max-width: 75%; font-size: 15px; line-height: 1.5;">Sorry, I'm having trouble connecting. Please try again.</span>`;
                     messages.appendChild(errorMsg);
                 }
 
                 messages.scrollTop = messages.scrollHeight;
             }
+
+            // Add animations
+            const animationStyle = document.createElement('style');
+            animationStyle.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                @keyframes slideInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                @keyframes pulse {
+                    0%, 100% {
+                        opacity: 0.4;
+                    }
+                    50% {
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(animationStyle);
 
             document.getElementById('send-btn').addEventListener('click', () => {
                 const input = document.getElementById('chat-input');
