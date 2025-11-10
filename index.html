@@ -2338,51 +2338,51 @@
                 }
             }, 100);
 
-            // Chat messages area with darker background (compact)
+            // Chat messages area with seamless design
             const messages = document.createElement('div');
             messages.id = 'chat-messages';
             messages.style.cssText = `
                 flex: 1;
-                padding: 16px;
+                padding: 18px;
                 overflow-y: auto;
-                background: #050505;
+                background: linear-gradient(to bottom, rgba(255, 86, 0, 0.03) 0%, #050505 60px);
                 position: relative;
             `;
 
-            // Custom scrollbar
+            // Custom scrollbar - ultra minimal
             const style = document.createElement('style');
             style.textContent = `
                 #chat-messages::-webkit-scrollbar {
-                    width: 6px;
+                    width: 4px;
                 }
                 #chat-messages::-webkit-scrollbar-track {
-                    background: rgba(255, 255, 255, 0.05);
+                    background: transparent;
                 }
                 #chat-messages::-webkit-scrollbar-thumb {
-                    background: ${config.bubbleColor};
-                    border-radius: 3px;
+                    background: rgba(255, 86, 0, 0.3);
+                    border-radius: 2px;
                 }
                 #chat-messages::-webkit-scrollbar-thumb:hover {
-                    background: #ff6b1a;
+                    background: rgba(255, 86, 0, 0.5);
                 }
             `;
             document.head.appendChild(style);
 
-            // Add welcome message with sleek styling (no borders)
+            // Add welcome message with seamless styling
             messages.innerHTML = `
-                <div style="background: rgba(255, 255, 255, 0.08); border: none; padding: 12px; border-radius: 10px; margin-bottom: 12px; color: #f5f5f7; font-size: 14px; line-height: 1.5;">
+                <div style="background: rgba(255, 255, 255, 0.08); border: none; padding: 13px 15px; border-radius: 12px; margin-bottom: 14px; color: #f5f5f7; font-size: 14px; line-height: 1.5;">
                     ${config.welcomeMessage}
                 </div>
             `;
 
-            // Chat input area with sleek design (no borders)
+            // Chat input area with seamless design
             const inputArea = document.createElement('div');
             inputArea.innerHTML = `
-                <div style="padding: 16px; background: rgba(0, 0, 0, 0.3);">
+                <div style="padding: 16px 18px 18px 18px; background: linear-gradient(to top, #0a0a0a 0%, rgba(5, 5, 5, 0.8) 100%);">
                     <div style="display: flex; gap: 8px; align-items: center;">
                         <input type="text" id="chat-input" placeholder="Ask me anything..."
-                               style="flex: 1; padding: 11px 14px; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.08); color: #f5f5f7; font-size: 14px; outline: none; transition: all 0.3s ease;">
-                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 86, 0, 0.3);">Send</button>
+                               style="flex: 1; padding: 11px 14px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.08); color: #f5f5f7; font-size: 14px; outline: none; transition: all 0.3s ease;">
+                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 86, 0, 0.3);">Send</button>
                     </div>
                 </div>
             `;
@@ -2462,18 +2462,18 @@
                 // Add user message with gradient background
                 const userMsg = document.createElement('div');
                 userMsg.style.cssText = 'text-align: right; margin-bottom: 14px; animation: slideInRight 0.3s ease;';
-                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; padding: 10px 14px; border-radius: 10px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(255, 86, 0, 0.3);">${message}</span>`;
+                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(255, 86, 0, 0.3);">${message}</span>`;
                 messages.appendChild(userMsg);
 
                 // Scroll to bottom
                 messages.scrollTop = messages.scrollHeight;
 
-                // Add typing indicator (sleek, no borders)
+                // Add typing indicator (seamless design)
                 const typingIndicator = document.createElement('div');
                 typingIndicator.id = 'typing-indicator';
                 typingIndicator.style.cssText = 'text-align: left; margin-bottom: 14px;';
                 typingIndicator.innerHTML = `
-                    <span style="background: rgba(255, 255, 255, 0.08); border: none; padding: 10px 14px; border-radius: 10px; display: inline-block; color: #a1a1a6; font-size: 14px;">
+                    <span style="background: rgba(255, 255, 255, 0.08); border: none; padding: 11px 15px; border-radius: 12px; display: inline-block; color: #a1a1a6; font-size: 14px;">
                         <span style="animation: pulse 1.5s ease-in-out infinite;">●</span>
                         <span style="animation: pulse 1.5s ease-in-out 0.2s infinite;">●</span>
                         <span style="animation: pulse 1.5s ease-in-out 0.4s infinite;">●</span>
@@ -2503,10 +2503,10 @@
                         typingIndicator.remove();
                     }
 
-                    // Add bot response with sleek styling (no borders)
+                    // Add bot response with seamless styling
                     const botMsg = document.createElement('div');
                     botMsg.style.cssText = 'text-align: left; margin-bottom: 14px; animation: slideInLeft 0.3s ease;';
-                    botMsg.innerHTML = `<span style="background: rgba(255, 255, 255, 0.08); border: none; color: #f5f5f7; padding: 10px 14px; border-radius: 10px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5;">${data.response || 'Sorry, I encountered an error.'}</span>`;
+                    botMsg.innerHTML = `<span style="background: rgba(255, 255, 255, 0.08); border: none; color: #f5f5f7; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5;">${data.response || 'Sorry, I encountered an error.'}</span>`;
                     messages.appendChild(botMsg);
 
                 } catch (error) {
@@ -2519,7 +2519,7 @@
 
                     const errorMsg = document.createElement('div');
                     errorMsg.style.cssText = 'text-align: left; margin-bottom: 14px;';
-                    errorMsg.innerHTML = `<span style="background: rgba(239, 68, 68, 0.25); border: none; color: #fca5a5; padding: 10px 14px; border-radius: 10px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5;">Sorry, I'm having trouble connecting. Please try again.</span>`;
+                    errorMsg.innerHTML = `<span style="background: rgba(239, 68, 68, 0.25); border: none; color: #fca5a5; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5;">Sorry, I'm having trouble connecting. Please try again.</span>`;
                     messages.appendChild(errorMsg);
                 }
 
