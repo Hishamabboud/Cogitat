@@ -22,9 +22,9 @@
         }
 
         body {
-            color: #1d1d1f;
-            background-color: #ffffff;
-            line-height: 1.5;
+            color: #f5f5f7;
+            background-color: #050505;
+            line-height: 1.6;
             overflow-x: hidden;
             margin: 0;
             -webkit-font-smoothing: antialiased;
@@ -36,7 +36,7 @@
 
         /* Navigation */
         nav {
-            background-color: rgba(242, 242, 242, 0.9);
+            background-color: rgba(5, 5, 5, 0.95);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             position: fixed;
@@ -47,8 +47,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: none;
         }
 
         .nav-container {
@@ -100,12 +100,12 @@
         }
 
         .nav-links a {
-            color: #1d1d1f;
+            color: #f5f5f7;
             text-decoration: none;
             font-size: 15px;
             font-weight: 400;
             opacity: 0.8;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, color 0.3s;
             padding: 0 10px;
             letter-spacing: -0.01em;
             height: 100%;
@@ -115,20 +115,22 @@
 
         .nav-links a:hover, .nav-links a.active {
             opacity: 1;
+            color: #ff5600;
         }
 
         .nav-links a.active {
-            color: #1840a0;
+            color: #ff5600;
             font-weight: 500;
         }
 
 
         .nav-cta {
-            background-color: #4f1584;
+            background-color: #ff5600;
             border-radius: 980px;
-            padding: 4px 11px !important;
+            padding: 8px 16px !important;
             color: white !important;
             opacity: 1 !important;
+            font-weight: 500 !important;
         }
 
         /* Hero Section */
@@ -147,42 +149,41 @@
             left: -2000px;
             right: -2000px;
             height: 700px;
-            background: linear-gradient(180deg, #f5f0fa 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
             z-index: -1;
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
             margin-bottom: 6px;
-            background: linear-gradient(90deg, #4f1584, #a61082);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
         }
 
         .hero p {
-            font-size: 26px;
-            color: #86868b;
+            font-size: 24px;
+            color: #a1a1a6;
             max-width: 800px;
             margin: 0 auto 30px;
+            line-height: 1.5;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #4f1584;
+            background-color: #ff5600;
             color: white;
-            padding: 12px 24px;
+            padding: 14px 32px;
             border-radius: 980px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 17px;
             transition: all 0.3s ease;
         }
 
         .cta-button:hover {
-            background-color: #a61082;
-            transform: scale(1.02);
+            background-color: #ff6a1a;
+            transform: scale(1.05);
         }
 
         .demo-button {
@@ -193,9 +194,9 @@
         }
 
         @keyframes buttonPulse {
-            0% { transform: scale(1); box-shadow: 0 8px 16px rgba(79, 21, 132, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 12px 24px rgba(79, 21, 132, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 8px 16px rgba(79, 21, 132, 0.3); }
+            0% { transform: scale(1); box-shadow: 0 8px 16px rgba(255, 86, 0, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 24px rgba(255, 86, 0, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 8px 16px rgba(255, 86, 0, 0.3); }
         }
 
         .animated-button {
@@ -259,20 +260,21 @@
 
         /* Features Section */
         .features {
-            padding: 100px 20px;
+            padding: 120px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            background-color: #f5f5f7;
-            border-radius: 30px;
-            scroll-margin-top: 80px; /* Added to ensure proper positioning when navigating to this section */
+            background-color: transparent;
+            border-radius: 0;
+            scroll-margin-top: 80px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 48px;
-            font-weight: 600;
+            font-size: 56px;
+            font-weight: 700;
             margin-bottom: 80px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            color: #ffffff;
         }
 
         .features-grid {
@@ -283,46 +285,51 @@
 
         /* Feature Cards Hover Effect */
         .feature-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            opacity: 0.75;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 50px 40px;
+            border-radius: 24px;
+            text-align: left;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff5600;
+            letter-spacing: 0.05em;
         }
 
         .feature-card:hover {
-            transform: scale(1.05);
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .feature-card:hover h3 {
-            font-size: 26px;
-        }
-
-        .feature-card:hover p {
-            font-size: 18px;
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 86, 0, 0.3);
         }
 
         .feature-card h3 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 16px;
+            margin-top: 30px;
             font-weight: 600;
-            transition: font-size 0.3s ease;
+            color: #ffffff;
         }
 
         .feature-card p {
-            color: #86868b;
+            color: #a1a1a6;
             font-size: 17px;
-            transition: font-size 0.3s ease;
+            line-height: 1.6;
         }
 
         .feature-icon {
             font-size: 48px;
             margin-bottom: 20px;
-            color: #1840a0;
+            color: #ff5600;
         }
 
         /* Icon styles */
@@ -330,7 +337,7 @@
             width: 48px;
             height: 48px;
             margin-bottom: 20px;
-            fill: #1840a0;
+            fill: #ff5600;
         }
 
         /* Pricing Section */
@@ -338,7 +345,7 @@
             padding: 120px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            background-color: #1d1d1f;
+            background-color: transparent;
             position: relative;
             overflow: hidden;
             color: #f5f5f7;
@@ -351,7 +358,7 @@
             left: -2000px;
             right: -2000px;
             height: 100%;
-            background: linear-gradient(180deg, #000000 0%, #1d1d1f 100%);
+            background: transparent;
             z-index: -1;
         }
 
@@ -368,39 +375,37 @@
         }
 
         .pricing-card {
-            background: #2d2d2f;
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 50px 40px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             transition: all 0.4s ease;
             position: relative;
-            border: 2px solid transparent;
-            opacity: 0.8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transform: translateY(0);
         }
 
         .pricing-card:hover {
-            transform: scale(1.03) translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            opacity: 1;
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 86, 0, 0.3);
             z-index: 2;
         }
 
         .pricing-card.featured {
-            background: linear-gradient(135deg, #333333, #2d2d2f);
-            border: 2px solid rgba(79, 21, 132, 0.2);
-            transform: scale(1.05);
-            opacity: 1;
+            background: rgba(255, 86, 0, 0.05);
+            border: 1px solid rgba(255, 86, 0, 0.3);
+            transform: scale(1.02);
             z-index: 1;
         }
 
         .pricing-card.featured:hover {
-            transform: scale(1.08) translateY(-10px);
-            box-shadow: 0 15px 35px rgba(79, 21, 132, 0.3);
-            border: 2px solid rgba(79, 21, 132, 0.4);
+            transform: scale(1.02) translateY(-10px);
+            background: rgba(255, 86, 0, 0.08);
+            border-color: rgba(255, 86, 0, 0.5);
         }
 
         .pricing-card::after {
@@ -410,7 +415,7 @@
             left: 5%;
             width: 90%;
             height: 10px;
-            background: linear-gradient(90deg, transparent, rgba(79, 21, 132, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 86, 0, 0.2), transparent);
             border-radius: 50%;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -447,7 +452,7 @@
 
         .pricing-card:hover .price {
             transform: scale(1.05);
-            color: #a61082;
+            color: #ff5600;
         }
 
         .price span {
@@ -480,7 +485,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #1840a0;
+            color: #ff5600;
             font-weight: bold;
             opacity: 0.8;
             transition: all 0.2s ease;
@@ -499,28 +504,27 @@
         .pricing-card .cta-button {
             width: 100%;
             margin-top: auto;
-            background-color: #4f1584;
+            background-color: #ff5600;
             color: white;
             padding: 15px 24px;
             border-radius: 980px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             outline: none;
-            box-shadow: 0 2px 8px rgba(79, 21, 132, 0.3);
+            box-shadow: none;
         }
 
         .pricing-card .cta-button:hover {
-            background-color: #a61082;
+            background-color: #ff6a1a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(166, 16, 130, 0.4);
         }
 
         .pricing-card.featured .cta-button {
-            background-color: #1840a0;
+            background-color: #ff5600;
             color: white;
             font-weight: 600;
         }
@@ -530,93 +534,98 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: #1840a0;
+            background: #ff5600;
             color: white;
-            padding: 5px 15px;
+            padding: 6px 16px;
             border-radius: 15px;
             font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
         }
 
 
         /* Testimonials Section */
         .testimonials {
-            padding: 100px 20px;
-            background-color: #f5f5f7;
+            padding: 120px 20px;
+            background-color: transparent;
             text-align: center;
         }
 
         .testimonial-card {
             max-width: 800px;
             margin: 0 auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 60px 50px;
+            border-radius: 24px;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .testimonial-text {
             font-size: 24px;
-            font-weight: 500;
-            color: #1d1d1f;
-            line-height: 1.4;
+            font-weight: 400;
+            color: #f5f5f7;
+            line-height: 1.6;
             margin-bottom: 30px;
-            font-style: italic;
+            font-style: normal;
         }
 
         .testimonial-author {
             font-size: 18px;
             font-weight: 600;
+            color: #ffffff;
         }
 
         .testimonial-company {
-            color: #86868b;
+            color: #a1a1a6;
             font-size: 16px;
         }
 
         /* Call to Action Section */
         .cta {
-            padding: 120px 20px;
+            padding: 140px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #4f1584, #a61082);
+            background: transparent;
             color: white;
         }
 
         .cta h2 {
-            font-size: 48px;
-            font-weight: 600;
+            font-size: 56px;
+            font-weight: 700;
             margin-bottom: 20px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            letter-spacing: -0.03em;
         }
 
         .cta p {
             font-size: 24px;
             max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
+            margin: 0 auto 50px;
+            color: #a1a1a6;
+            line-height: 1.5;
         }
 
         .cta .cta-button {
-            background-color: white;
-            color: #4f1584;
+            background-color: #ff5600;
+            color: white;
             font-size: 20px;
-            padding: 16px 32px;
+            padding: 18px 40px;
         }
 
         .cta .cta-button:hover {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #ff6a1a;
         }
 
         /* Footer */
         footer {
-            padding: 60px 40px;
-            background-color: #f5f5f7;
+            padding: 80px 40px;
+            background-color: transparent;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-links {
@@ -628,13 +637,14 @@
 
         .footer-links a {
             margin: 0 15px;
-            color: #515154;
+            color: #a1a1a6;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            text-decoration: underline;
+            color: #ff5600;
         }
 
         .copyright {
@@ -657,16 +667,17 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #e5e5e7;
-            color: #515154;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #a1a1a6;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-icon:hover {
-            background-color: #4f1584;
+            background-color: #ff5600;
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-color: #ff5600;
         }
 
         .social-icon svg {
@@ -791,40 +802,11 @@
             }
         }
 
-        .pricing {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #f5f0fa; /* Changed from #1d1d1f to a light purple that matches the top gradient */
-            position: relative;
-            overflow: hidden;
-            color: #1d1d1f; /* Changed from #f5f5f7 (white) to dark text for better contrast on light background */
-        }
-
-        .pricing::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -2000px;
-            right: -2000px;
-            height: 100%;
-            background: linear-gradient(180deg, #ffffff 0%, #f5f0fa 100%); /* Changed from dark gradient to light purple */
-            z-index: -1;
-        }
-
-        .pricing .section-title {
-            color: #1d1d1f; /* Changed from #f5f5f7 to dark text */
-            font-size: 48px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-
         .section-subtitle {
             font-size: 22px;
             max-width: 700px;
             margin: 0 auto 60px;
-            color: #515154; /* Changed from #a1a1a6 to slightly darker for better contrast */
+            color: #a1a1a6;
             text-align: center;
             line-height: 1.5;
         }
@@ -835,14 +817,14 @@
         }
 
         .custom-pricing-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f5f0fa 100%); /* Changed from dark gradient to light purple */
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 24px;
             padding: 60px 40px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(79, 21, 132, 0.15); /* Lightened shadow */
+            box-shadow: none;
             transition: all 0.4s ease;
             position: relative;
-            border: 2px solid rgba(79, 21, 132, 0.1); /* Changed border color */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
 
@@ -852,29 +834,29 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #4f1584, #a61082);
+            height: 4px;
+            background: #ff5600;
             z-index: 1;
         }
 
         .custom-pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(79, 21, 132, 0.3);
-            border-color: rgba(79, 21, 132, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 86, 0, 0.3);
         }
 
         .custom-pricing-card h3 {
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #1d1d1f; /* Changed from #f5f5f7 to dark text */
+            color: #ffffff;
             transition: all 0.3s ease;
         }
 
         .custom-pricing-card p {
             font-size: 18px;
             line-height: 1.6;
-            color: #515154; /* Changed from #a1a1a6 to slightly darker for better contrast */
+            color: #a1a1a6;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
@@ -891,26 +873,26 @@
         .benefit-item {
             display: flex;
             align-items: center;
-            background: rgba(79, 21, 132, 0.05); /* Changed from dark to light purple background */
+            background: rgba(255, 86, 0, 0.05);
             padding: 15px 20px;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .benefit-item:hover {
-            background: rgba(79, 21, 132, 0.1);
+            background: rgba(255, 86, 0, 0.1);
             transform: translateY(-3px);
         }
 
         .benefit-text {
             font-weight: 500;
-            color: #1d1d1f; /* Changed from #f5f5f7 to dark text */
+            color: #f5f5f7;
         }
 
         /* Keep the button styling consistent with the site's color scheme */
         .pricing-cta-button {
             display: inline-block;
-            background: linear-gradient(90deg, #4f1584, #a61082);
+            background: #ff5600;
             color: white;
             padding: 16px 36px;
             border-radius: 30px;
@@ -919,12 +901,12 @@
             font-size: 18px;
             transition: all 0.3s ease;
             margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(79, 21, 132, 0.4);
+            box-shadow: none;
         }
 
         .pricing-cta-button:hover {
+            background: #ff6a1a;
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(166, 16, 130, 0.5);
         }
 
         /* Responsive adjustments */
@@ -1269,12 +1251,12 @@
                 width: 85%;
                 max-width: 300px;
                 height: 100vh;
-                background-color: rgba(242, 242, 242, 0.98);
+                background-color: rgba(10, 10, 10, 0.98);
                 backdrop-filter: saturate(180%) blur(20px);
                 -webkit-backdrop-filter: saturate(180%) blur(20px);
                 z-index: 1000;
                 transition: left 0.3s ease;
-                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
 
                 /* Enable smooth scrolling for the menu content */
                 overflow-y: auto;
@@ -1300,10 +1282,10 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background-color: rgba(252, 252, 252, 0.98);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                background-color: rgba(10, 10, 10, 0.98);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 z-index: 1001;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             }
 
             /* Style the navigation links to be more distinct */
@@ -1425,7 +1407,7 @@
 <section class="features benefits heartbeat-section" id="benefits">
     <h2 class="section-title fade-in">Let Cogitat Be Your Smartest Team Member</h2>
     <div class="features-grid">
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" data-number="01">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
@@ -1434,7 +1416,7 @@
             <h3>24/7 Instant Answers</h3>
             <p>Be there when your customers need you, with no delays and no time zones. Just fast, accurate help, anytime.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-1">
+        <div class="feature-card fade-in stagger-delay-1" data-number="02">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
@@ -1443,7 +1425,7 @@
             <h3>Real Conversations That Convert</h3>
             <p>Cogitat chats like a human, understands your business, and helps visitors take action, not just browse.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-2">
+        <div class="feature-card fade-in stagger-delay-2" data-number="03">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99l1.5 1.5z"/>
@@ -1452,7 +1434,7 @@
             <h3>Boost Sales on the Spot</h3>
             <p>Answer questions, remove doubts, and turn curious visitors into paying customers: all in real-time.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-3">
+        <div class="feature-card fade-in stagger-delay-3" data-number="04">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
@@ -1461,7 +1443,7 @@
             <h3>Save Big on Support Costs</h3>
             <p>Let Cogitat handle repetitive questions so your team can focus on what matters.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-4">
+        <div class="feature-card fade-in stagger-delay-4" data-number="05">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/>
@@ -1470,7 +1452,7 @@
             <h3>Always On-Brand, Always Right</h3>
             <p>Cogitat speaks your language, literally. Every message matches your brand's tone and vibe.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-5">
+        <div class="feature-card fade-in stagger-delay-5" data-number="06">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
@@ -1486,7 +1468,7 @@
 <section class="features heartbeat-section" id="features">
     <h2 class="section-title fade-in">Everything Your AI Needs to Feel Human and Work Like a Pro</h2>
     <div class="features-grid">
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" data-number="01">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
@@ -1495,7 +1477,7 @@
             <h3>Natural, Human-Sounding Chat</h3>
             <p>Conversations that actually feel like conversations, not scripts. Your visitors won't believe it's AI.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-1">
+        <div class="feature-card fade-in stagger-delay-1" data-number="02">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
@@ -1504,7 +1486,7 @@
             <h3>Train It Your Way</h3>
             <p>Upload PDFS, menus, and service documents and Cogitat will also crawl your website, blog, and FAQS to learn everything about your business. No tech skills required.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-2">
+        <div class="feature-card fade-in stagger-delay-2" data-number="03">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13 10h-2V8h2v2zm0-4h-2V1h2v5zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03L21 4.96 19.25 4l-3.7 7H8.53L4.27 2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2z"/>
@@ -1513,7 +1495,7 @@
             <h3>Easy to Plug Into Your Site or App</h3>
             <p>Copy. Paste. Done. Embed Cogitat on your site or app with a simple code snippet, and it's ready to go.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-3">
+        <div class="feature-card fade-in stagger-delay-3" data-number="04">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0112 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 00-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 012.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/>
@@ -1526,7 +1508,7 @@
             <h3>Fully Yours to Customize</h3>
             <p>Name it, brand it, control the tone, and choose how it opens; make it feel like part of your team from day one.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-4">
+        <div class="feature-card fade-in stagger-delay-4" data-number="05">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
@@ -1535,7 +1517,7 @@
             <h3>Smarter With Every Chat</h3>
             <p>Cogitat learns from every interaction to better serve your customers and boost results over time.</p>
         </div>
-        <div class="feature-card fade-in stagger-delay-5">
+        <div class="feature-card fade-in stagger-delay-5" data-number="06">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M16 9V4l1 1h2V3h-6v2h2l1-1v5c-3.3 0-6 2.7-6 6 0 1.57.61 3 1.61 4.07C10.28 20.99 8.17 22 6 22c-1.66 0-3-1.34-3-3s1.34-3 3-3c.95 0 1.8.45 2.35 1.15.23.26.63.28.87.04.23-.24.21-.64-.04-.87-.83-.94-2.01-1.32-3.18-1.32-2.76 0-5 2.24-5 5s2.24 5 5 5c2.64 0 5.22-1.13 7.15-3.05C14.25 22.5 16.06 23 18 23c3.31 0 6-2.69 6-6s-2.7-6-6-6c-.7 0-1.36.12-2 .35V15c0 1.1.9 2 2 2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c0-1.1-.9-2-2-2z"/>
