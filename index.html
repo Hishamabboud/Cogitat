@@ -2243,13 +2243,14 @@
 
     <script>
         (function() {
-            // Configuration - Updated to match website design
+            // Configuration - Updated to match purple/blue/pink color scheme
             const config = {
                 clientId: '20',
                 domain: 'cogitatai.com',
                 position: 'bottom-right',
                 theme: 'dark',
-                bubbleColor: '#ff5600',
+                bubbleColor: '#4f1584',
+                accentColor: '#a61082',
                 welcomeMessage: 'Welcome to CogitatAI! How can I help you today?'
             };
 
@@ -2263,14 +2264,14 @@
                 bottom: 30px;
                 width: 64px;
                 height: 64px;
-                background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%);
+                background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 100%);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
                 cursor: pointer;
-                box-shadow: 0 8px 24px rgba(255, 86, 0, 0.4);
+                box-shadow: 0 8px 24px rgba(79, 21, 132, 0.4);
                 z-index: 9999;
                 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 font-size: 24px;
@@ -2279,11 +2280,11 @@
             // Add hover effect for bubble
             bubble.addEventListener('mouseenter', () => {
                 bubble.style.transform = 'scale(1.1) translateY(-4px)';
-                bubble.style.boxShadow = '0 12px 32px rgba(255, 86, 0, 0.6)';
+                bubble.style.boxShadow = '0 12px 32px rgba(79, 21, 132, 0.6)';
             });
             bubble.addEventListener('mouseleave', () => {
                 bubble.style.transform = 'scale(1) translateY(0)';
-                bubble.style.boxShadow = '0 8px 24px rgba(255, 86, 0, 0.4)';
+                bubble.style.boxShadow = '0 8px 24px rgba(79, 21, 132, 0.4)';
             });
 
             // Create chat window with website-matching design (smaller size)
@@ -2298,7 +2299,7 @@
                 background: #0a0a0a;
                 border: none;
                 border-radius: 16px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 86, 0, 0.15);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(79, 21, 132, 0.2);
                 z-index: 9998;
                 display: none;
                 flex-direction: column;
@@ -2314,7 +2315,7 @@
             // Chat header with gradient (sleek, no borders)
             const header = document.createElement('div');
             header.innerHTML = `
-                <div style="padding: 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; display: flex; justify-content: space-between; align-items: center;">
+                <div style="padding: 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 17px; font-weight: 600; margin-bottom: 2px;">Cogitat AI</div>
                         <div style="font-size: 11px; opacity: 0.9;">Always here to help</div>
@@ -2345,7 +2346,7 @@
                 flex: 1;
                 padding: 18px;
                 overflow-y: auto;
-                background: linear-gradient(to bottom, rgba(255, 86, 0, 0.03) 0%, #050505 60px);
+                background: linear-gradient(to bottom, rgba(79, 21, 132, 0.05) 0%, #050505 60px);
                 position: relative;
             `;
 
@@ -2359,11 +2360,11 @@
                     background: transparent;
                 }
                 #chat-messages::-webkit-scrollbar-thumb {
-                    background: rgba(255, 86, 0, 0.3);
+                    background: rgba(79, 21, 132, 0.4);
                     border-radius: 2px;
                 }
                 #chat-messages::-webkit-scrollbar-thumb:hover {
-                    background: rgba(255, 86, 0, 0.5);
+                    background: rgba(166, 16, 130, 0.6);
                 }
             `;
             document.head.appendChild(style);
@@ -2382,7 +2383,7 @@
                     <div style="display: flex; gap: 8px; align-items: center;">
                         <input type="text" id="chat-input" placeholder="Ask me anything..."
                                style="flex: 1; padding: 11px 14px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.08); color: #f5f5f7; font-size: 14px; outline: none; transition: all 0.3s ease;">
-                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 86, 0, 0.3);">Send</button>
+                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(79, 21, 132, 0.4);">Send</button>
                     </div>
                 </div>
             `;
@@ -2395,7 +2396,7 @@
                 if (input) {
                     input.addEventListener('focus', () => {
                         input.style.background = 'rgba(255, 255, 255, 0.12)';
-                        input.style.boxShadow = '0 0 0 2px rgba(255, 86, 0, 0.3)';
+                        input.style.boxShadow = '0 0 0 2px rgba(79, 21, 132, 0.4)';
                     });
                     input.addEventListener('blur', () => {
                         input.style.background = 'rgba(255, 255, 255, 0.08)';
@@ -2406,11 +2407,11 @@
                 if (sendBtn) {
                     sendBtn.addEventListener('mouseenter', () => {
                         sendBtn.style.transform = 'translateY(-2px)';
-                        sendBtn.style.boxShadow = '0 6px 20px rgba(255, 86, 0, 0.5)';
+                        sendBtn.style.boxShadow = '0 6px 20px rgba(79, 21, 132, 0.6)';
                     });
                     sendBtn.addEventListener('mouseleave', () => {
                         sendBtn.style.transform = 'translateY(0)';
-                        sendBtn.style.boxShadow = '0 4px 12px rgba(255, 86, 0, 0.3)';
+                        sendBtn.style.boxShadow = '0 4px 12px rgba(79, 21, 132, 0.4)';
                     });
                 }
             }, 100);
@@ -2462,7 +2463,7 @@
                 // Add user message with gradient background
                 const userMsg = document.createElement('div');
                 userMsg.style.cssText = 'text-align: right; margin-bottom: 14px; animation: slideInRight 0.3s ease;';
-                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(255, 86, 0, 0.3);">${message}</span>`;
+                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(79, 21, 132, 0.4);">${message}</span>`;
                 messages.appendChild(userMsg);
 
                 // Scroll to bottom
