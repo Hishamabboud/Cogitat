@@ -39,9 +39,9 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(255, 86, 0, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 86, 0, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255, 86, 0, 0.02) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(79, 21, 132, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(24, 64, 160, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(166, 16, 130, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -136,17 +136,17 @@
 
         .nav-links a:hover, .nav-links a.active {
             opacity: 1;
-            color: #ff5600;
+            color: #4f1584;
         }
 
         .nav-links a.active {
-            color: #ff5600;
+            color: #4f1584;
             font-weight: 500;
         }
 
 
         .nav-cta {
-            background-color: #ff5600;
+            background-color: #4f1584;
             border-radius: 980px;
             padding: 8px 16px !important;
             color: white !important;
@@ -183,7 +183,7 @@
             transform: translateX(-50%);
             width: 1000px;
             height: 1000px;
-            background: radial-gradient(circle, rgba(255, 86, 0, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(79, 21, 132, 0.15) 0%, transparent 70%);
             animation: pulse 8s ease-in-out infinite;
             z-index: -1;
             pointer-events: none;
@@ -218,7 +218,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #ff5600, transparent);
+            background: linear-gradient(90deg, transparent, #4f1584, transparent);
             animation: expandWidth 1.5s ease-out 0.5s forwards;
             width: 0;
         }
@@ -251,7 +251,7 @@
 
         .cta-button {
             display: inline-block;
-            background-color: #ff5600;
+            background-color: #4f1584;
             color: white;
             padding: 14px 32px;
             border-radius: 980px;
@@ -261,7 +261,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 86, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 21, 132, 0.3);
         }
 
         .cta-button::before {
@@ -282,7 +282,7 @@
         .cta-button:hover {
             background-color: #ff6a1a;
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 86, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(79, 21, 132, 0.5);
         }
 
         .cta-button:active {
@@ -297,9 +297,9 @@
         }
 
         @keyframes buttonPulse {
-            0% { transform: scale(1); box-shadow: 0 8px 16px rgba(255, 86, 0, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 12px 24px rgba(255, 86, 0, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 8px 16px rgba(255, 86, 0, 0.3); }
+            0% { transform: scale(1); box-shadow: 0 8px 16px rgba(79, 21, 132, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 24px rgba(79, 21, 132, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 8px 16px rgba(79, 21, 132, 0.3); }
         }
 
         .animated-button {
@@ -380,7 +380,7 @@
             transform: translateX(-50%);
             width: 2px;
             height: 100px;
-            background: linear-gradient(to bottom, transparent, #ff5600, transparent);
+            background: linear-gradient(to bottom, transparent, #4f1584, transparent);
             opacity: 0.5;
         }
 
@@ -403,7 +403,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 86, 0, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(79, 21, 132, 0.2), transparent);
             z-index: -1;
         }
 
@@ -415,7 +415,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: #ff5600;
+            background: #4f1584;
             border-radius: 2px;
         }
 
@@ -445,7 +445,7 @@
             left: 40px;
             font-size: 14px;
             font-weight: 600;
-            color: #ff5600;
+            color: #4f1584;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
         }
@@ -457,7 +457,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 86, 0, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(79, 21, 132, 0.1) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.4s ease;
             pointer-events: none;
@@ -466,8 +466,8 @@
         .feature-card:hover {
             transform: translateY(-8px);
             background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 86, 0, 0.5);
-            box-shadow: 0 20px 40px rgba(255, 86, 0, 0.2);
+            border-color: rgba(79, 21, 132, 0.5);
+            box-shadow: 0 20px 40px rgba(79, 21, 132, 0.2);
         }
 
         .feature-card:hover::before {
@@ -496,7 +496,7 @@
         .feature-icon {
             font-size: 48px;
             margin-bottom: 20px;
-            color: #ff5600;
+            color: #4f1584;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: inline-block;
         }
@@ -506,12 +506,12 @@
         }
 
         .feature-icon svg {
-            filter: drop-shadow(0 4px 8px rgba(255, 86, 0, 0.3));
+            filter: drop-shadow(0 4px 8px rgba(79, 21, 132, 0.3));
             transition: filter 0.3s ease;
         }
 
         .feature-card:hover .feature-icon svg {
-            filter: drop-shadow(0 8px 16px rgba(255, 86, 0, 0.5));
+            filter: drop-shadow(0 8px 16px rgba(79, 21, 132, 0.5));
         }
 
         /* Icon styles */
@@ -519,7 +519,7 @@
             width: 48px;
             height: 48px;
             margin-bottom: 20px;
-            fill: #ff5600;
+            fill: #4f1584;
         }
 
         /* Pricing Section */
@@ -578,7 +578,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 86, 0, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(79, 21, 132, 0.1), transparent);
             transition: left 0.6s ease;
         }
 
@@ -589,22 +589,22 @@
         .pricing-card:hover {
             transform: translateY(-15px) scale(1.02);
             background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 86, 0, 0.5);
-            box-shadow: 0 25px 50px rgba(255, 86, 0, 0.25);
+            border-color: rgba(79, 21, 132, 0.5);
+            box-shadow: 0 25px 50px rgba(79, 21, 132, 0.25);
             z-index: 2;
         }
 
         .pricing-card.featured {
-            background: rgba(255, 86, 0, 0.05);
-            border: 1px solid rgba(255, 86, 0, 0.3);
+            background: rgba(79, 21, 132, 0.05);
+            border: 1px solid rgba(79, 21, 132, 0.3);
             transform: scale(1.02);
             z-index: 1;
         }
 
         .pricing-card.featured:hover {
             transform: scale(1.02) translateY(-10px);
-            background: rgba(255, 86, 0, 0.08);
-            border-color: rgba(255, 86, 0, 0.5);
+            background: rgba(79, 21, 132, 0.08);
+            border-color: rgba(79, 21, 132, 0.5);
         }
 
         .pricing-card::after {
@@ -614,7 +614,7 @@
             left: 5%;
             width: 90%;
             height: 10px;
-            background: linear-gradient(90deg, transparent, rgba(255, 86, 0, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(79, 21, 132, 0.2), transparent);
             border-radius: 50%;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -651,7 +651,7 @@
 
         .pricing-card:hover .price {
             transform: scale(1.05);
-            color: #ff5600;
+            color: #4f1584;
         }
 
         .price span {
@@ -684,7 +684,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #ff5600;
+            color: #4f1584;
             font-weight: bold;
             opacity: 0.8;
             transition: all 0.2s ease;
@@ -703,7 +703,7 @@
         .pricing-card .cta-button {
             width: 100%;
             margin-top: auto;
-            background-color: #ff5600;
+            background-color: #4f1584;
             color: white;
             padding: 15px 24px;
             border-radius: 980px;
@@ -723,7 +723,7 @@
         }
 
         .pricing-card.featured .cta-button {
-            background-color: #ff5600;
+            background-color: #4f1584;
             color: white;
             font-weight: 600;
         }
@@ -733,7 +733,7 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: #ff5600;
+            background: #4f1584;
             color: white;
             padding: 6px 16px;
             border-radius: 15px;
@@ -760,7 +760,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 200px;
-            color: rgba(255, 86, 0, 0.05);
+            color: rgba(79, 21, 132, 0.05);
             font-family: Georgia, serif;
             line-height: 1;
             pointer-events: none;
@@ -780,8 +780,8 @@
 
         .testimonial-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 86, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(255, 86, 0, 0.15);
+            border-color: rgba(79, 21, 132, 0.3);
+            box-shadow: 0 20px 40px rgba(79, 21, 132, 0.15);
         }
 
         .testimonial-text {
@@ -831,7 +831,7 @@
         }
 
         .cta .cta-button {
-            background-color: #ff5600;
+            background-color: #4f1584;
             color: white;
             font-size: 20px;
             padding: 18px 40px;
@@ -865,7 +865,7 @@
         }
 
         .footer-links a:hover {
-            color: #ff5600;
+            color: #4f1584;
         }
 
         .copyright {
@@ -895,10 +895,10 @@
         }
 
         .social-icon:hover {
-            background-color: #ff5600;
+            background-color: #4f1584;
             color: white;
             transform: translateY(-3px);
-            border-color: #ff5600;
+            border-color: #4f1584;
         }
 
         .social-icon svg {
@@ -1056,14 +1056,14 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: #ff5600;
+            background: #4f1584;
             z-index: 1;
         }
 
         .custom-pricing-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 86, 0, 0.3);
+            border-color: rgba(79, 21, 132, 0.3);
         }
 
         .custom-pricing-card h3 {
@@ -1094,14 +1094,14 @@
         .benefit-item {
             display: flex;
             align-items: center;
-            background: rgba(255, 86, 0, 0.05);
+            background: rgba(79, 21, 132, 0.05);
             padding: 15px 20px;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .benefit-item:hover {
-            background: rgba(255, 86, 0, 0.1);
+            background: rgba(79, 21, 132, 0.1);
             transform: translateY(-3px);
         }
 
@@ -1113,7 +1113,7 @@
         /* Keep the button styling consistent with the site's color scheme */
         .pricing-cta-button {
             display: inline-block;
-            background: #ff5600;
+            background: #4f1584;
             color: white;
             padding: 16px 36px;
             border-radius: 30px;
@@ -2243,13 +2243,14 @@
 
     <script>
         (function() {
-            // Configuration - Updated to match website design
+            // Configuration - Updated to match purple/blue/pink color scheme
             const config = {
                 clientId: '20',
                 domain: 'cogitatai.com',
                 position: 'bottom-right',
                 theme: 'dark',
-                bubbleColor: '#ff5600',
+                bubbleColor: '#4f1584',
+                accentColor: '#a61082',
                 welcomeMessage: 'Welcome to CogitatAI! How can I help you today?'
             };
 
@@ -2263,14 +2264,14 @@
                 bottom: 30px;
                 width: 64px;
                 height: 64px;
-                background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%);
+                background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 100%);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
                 cursor: pointer;
-                box-shadow: 0 8px 24px rgba(255, 86, 0, 0.4);
+                box-shadow: 0 8px 24px rgba(79, 21, 132, 0.4);
                 z-index: 9999;
                 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 font-size: 24px;
@@ -2279,11 +2280,11 @@
             // Add hover effect for bubble
             bubble.addEventListener('mouseenter', () => {
                 bubble.style.transform = 'scale(1.1) translateY(-4px)';
-                bubble.style.boxShadow = '0 12px 32px rgba(255, 86, 0, 0.6)';
+                bubble.style.boxShadow = '0 12px 32px rgba(79, 21, 132, 0.6)';
             });
             bubble.addEventListener('mouseleave', () => {
                 bubble.style.transform = 'scale(1) translateY(0)';
-                bubble.style.boxShadow = '0 8px 24px rgba(255, 86, 0, 0.4)';
+                bubble.style.boxShadow = '0 8px 24px rgba(79, 21, 132, 0.4)';
             });
 
             // Create chat window with website-matching design (smaller size)
@@ -2298,7 +2299,7 @@
                 background: #0a0a0a;
                 border: none;
                 border-radius: 16px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 86, 0, 0.15);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(79, 21, 132, 0.2);
                 z-index: 9998;
                 display: none;
                 flex-direction: column;
@@ -2314,7 +2315,7 @@
             // Chat header with gradient (sleek, no borders)
             const header = document.createElement('div');
             header.innerHTML = `
-                <div style="padding: 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; display: flex; justify-content: space-between; align-items: center;">
+                <div style="padding: 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 17px; font-weight: 600; margin-bottom: 2px;">Cogitat AI</div>
                         <div style="font-size: 11px; opacity: 0.9;">Always here to help</div>
@@ -2345,7 +2346,7 @@
                 flex: 1;
                 padding: 18px;
                 overflow-y: auto;
-                background: linear-gradient(to bottom, rgba(255, 86, 0, 0.03) 0%, #050505 60px);
+                background: linear-gradient(to bottom, rgba(79, 21, 132, 0.05) 0%, #050505 60px);
                 position: relative;
             `;
 
@@ -2359,11 +2360,11 @@
                     background: transparent;
                 }
                 #chat-messages::-webkit-scrollbar-thumb {
-                    background: rgba(255, 86, 0, 0.3);
+                    background: rgba(79, 21, 132, 0.4);
                     border-radius: 2px;
                 }
                 #chat-messages::-webkit-scrollbar-thumb:hover {
-                    background: rgba(255, 86, 0, 0.5);
+                    background: rgba(166, 16, 130, 0.6);
                 }
             `;
             document.head.appendChild(style);
@@ -2382,7 +2383,7 @@
                     <div style="display: flex; gap: 8px; align-items: center;">
                         <input type="text" id="chat-input" placeholder="Ask me anything..."
                                style="flex: 1; padding: 11px 14px; border: none; border-radius: 12px; background: rgba(255, 255, 255, 0.08); color: #f5f5f7; font-size: 14px; outline: none; transition: all 0.3s ease;">
-                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 86, 0, 0.3);">Send</button>
+                        <button id="send-btn" style="padding: 11px 18px; background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(79, 21, 132, 0.4);">Send</button>
                     </div>
                 </div>
             `;
@@ -2395,7 +2396,7 @@
                 if (input) {
                     input.addEventListener('focus', () => {
                         input.style.background = 'rgba(255, 255, 255, 0.12)';
-                        input.style.boxShadow = '0 0 0 2px rgba(255, 86, 0, 0.3)';
+                        input.style.boxShadow = '0 0 0 2px rgba(79, 21, 132, 0.4)';
                     });
                     input.addEventListener('blur', () => {
                         input.style.background = 'rgba(255, 255, 255, 0.08)';
@@ -2406,11 +2407,11 @@
                 if (sendBtn) {
                     sendBtn.addEventListener('mouseenter', () => {
                         sendBtn.style.transform = 'translateY(-2px)';
-                        sendBtn.style.boxShadow = '0 6px 20px rgba(255, 86, 0, 0.5)';
+                        sendBtn.style.boxShadow = '0 6px 20px rgba(79, 21, 132, 0.6)';
                     });
                     sendBtn.addEventListener('mouseleave', () => {
                         sendBtn.style.transform = 'translateY(0)';
-                        sendBtn.style.boxShadow = '0 4px 12px rgba(255, 86, 0, 0.3)';
+                        sendBtn.style.boxShadow = '0 4px 12px rgba(79, 21, 132, 0.4)';
                     });
                 }
             }, 100);
@@ -2462,7 +2463,7 @@
                 // Add user message with gradient background
                 const userMsg = document.createElement('div');
                 userMsg.style.cssText = 'text-align: right; margin-bottom: 14px; animation: slideInRight 0.3s ease;';
-                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #ff6b1a 100%); color: white; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(255, 86, 0, 0.3);">${message}</span>`;
+                userMsg.innerHTML = `<span style="background: linear-gradient(135deg, ${config.bubbleColor} 0%, #1840a0 50%, ${config.accentColor} 100%); color: white; padding: 11px 15px; border-radius: 12px; display: inline-block; max-width: 78%; font-size: 14px; line-height: 1.5; box-shadow: 0 2px 8px rgba(79, 21, 132, 0.4);">${message}</span>`;
                 messages.appendChild(userMsg);
 
                 // Scroll to bottom
