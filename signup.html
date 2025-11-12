@@ -150,17 +150,17 @@
     }
 
     .signup-container {
-      background-color: rgba(255, 255, 255, 0.03);
+      background-color: var(--card-bg);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-radius: 24px;
       width: 100%;
       max-width: 450px;
       padding: 50px 40px;
-      box-shadow: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       z-index: 1;
       animation: fadeIn 0.6s ease-out;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
     }
 
     @keyframes fadeIn {
@@ -174,7 +174,7 @@
     }
 
     .signup-header h1 {
-      color: #ffffff;
+      color: var(--text-primary);
       font-size: 36px;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -182,7 +182,7 @@
     }
 
     .signup-header p {
-      color: #a1a1a6;
+      color: var(--text-secondary);
       font-size: 16px;
       max-width: 320px;
       margin: 0 auto;
