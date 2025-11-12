@@ -21,6 +21,7 @@
       --nav-bg: rgba(5, 5, 5, 0.95);
       --card-bg: rgba(255, 255, 255, 0.03);
       --border-color: rgba(255, 255, 255, 0.1);
+      --input-bg: rgba(255, 255, 255, 0.08);
     }
 
     /* Light Theme */
@@ -32,6 +33,7 @@
       --nav-bg: rgba(255, 255, 255, 0.95);
       --card-bg: rgba(0, 0, 0, 0.03);
       --border-color: rgba(0, 0, 0, 0.1);
+      --input-bg: rgba(0, 0, 0, 0.05);
     }
 
     /* Smooth theme transitions */
@@ -67,7 +69,7 @@
 
     /* Navigation */
     nav {
-      background-color: rgba(5, 5, 5, 0.95);
+      background-color: var(--nav-bg);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       position: sticky;
@@ -78,7 +80,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .nav-container {
@@ -108,7 +110,7 @@
     }
 
     .nav-links a {
-      color: #f5f5f7;
+      color: var(--text-primary);
       text-decoration: none;
       font-size: 12px;
       font-weight: 400;
@@ -134,7 +136,7 @@
       justify-content: center;
       min-height: calc(100vh - 44px);
       padding: 60px 20px;
-      background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+      background: var(--bg-primary);
       position: relative;
     }
 
@@ -201,16 +203,16 @@
     }
 
     .form-group label {
-      color: #1d1d1f;
+      color: var(--text-primary);
       font-size: 14px;
       font-weight: 500;
     }
 
     .form-group input, .form-group select, .form-group textarea {
-      background-color: #f5f5f7;
-      border: 2px solid #e5e5e7;
+      background-color: var(--input-bg);
+      border: 2px solid var(--border-color);
       border-radius: 10px;
-      color: #1d1d1f;
+      color: var(--text-primary);
       padding: 15px;
       font-size: 16px;
       transition: all 0.2s ease;
@@ -253,7 +255,7 @@
     .signup-footer {
       margin-top: 25px;
       text-align: center;
-      color: #a1a1a6;
+      color: var(--text-secondary);
       font-size: 14px;
     }
 
@@ -331,7 +333,7 @@
       display: flex;
       align-items: center;
       margin: 20px 0;
-      color: #a1a1a6;
+      color: var(--text-secondary);
     }
 
     .form-divider::before,
@@ -339,7 +341,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background-color: #e5e5e7;
+      background-color: var(--border-color);
     }
 
     .form-divider span {
@@ -360,15 +362,15 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background-color: #f5f5f7;
-      border: 1px solid #e5e5e7;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
       transition: all 0.2s;
       cursor: pointer;
     }
 
     .social-button:hover {
       transform: translateY(-2px);
-      background-color: #ffffff;
+      background-color: var(--input-bg);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 

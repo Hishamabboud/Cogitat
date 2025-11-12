@@ -118,13 +118,13 @@
             width: 100%;
             max-width: 1200px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 15px;
         }
 
         .nav-logo {
-            height: 124px;
+            height: 150px;
             width: auto;
             margin-right: 10px;
             margin-bottom: 9px;
@@ -1029,7 +1029,7 @@
             }
 
             .nav-logo {
-                height: 80px;
+                height: 100px;
                 margin-right: 10px;
                 margin-bottom: 5px;
             }
@@ -1487,8 +1487,7 @@
         /* Desktop Menu Styles */
         @media (min-width: 769px) {
             .nav-right {
-                display: flex;
-                align-items: center;
+                display: none;
             }
 
             .nav-links {
@@ -1512,6 +1511,12 @@
 
             .side-menu-header {
                 display: none;
+            }
+
+            .nav-left {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 
