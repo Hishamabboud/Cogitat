@@ -9,6 +9,48 @@
         document.documentElement.classList.add('preload');
     </script>
     <style>
+        /* Theme Variables */
+        :root {
+            /* Dark Theme (default) */
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --nav-bg: rgba(5, 5, 5, 0.95);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --gradient-1: rgba(79, 21, 132, 0.04);
+            --gradient-2: rgba(24, 64, 160, 0.05);
+            --gradient-3: rgba(166, 16, 130, 0.03);
+            --hero-gradient: rgba(79, 21, 132, 0.15);
+            --input-bg: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Light Theme */
+        body.light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --gradient-1: rgba(79, 21, 132, 0.08);
+            --gradient-2: rgba(24, 64, 160, 0.1);
+            --gradient-3: rgba(166, 16, 130, 0.06);
+            --hero-gradient: rgba(79, 21, 132, 0.1);
+            --input-bg: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Smooth theme transitions */
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        nav, .feature-card, .cta-button {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+        }
+
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -22,8 +64,8 @@
         }
 
         body {
-            color: #f5f5f7;
-            background-color: #050505;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
             line-height: 1.6;
             overflow-x: hidden;
             margin: 0;
@@ -39,9 +81,9 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(79, 21, 132, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(24, 64, 160, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(166, 16, 130, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, var(--gradient-1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--gradient-2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--gradient-3) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -57,7 +99,7 @@
 
         /* Navigation */
         nav {
-            background-color: rgba(5, 5, 5, 0.95);
+            background-color: var(--nav-bg);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             position: fixed;
@@ -68,7 +110,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
             box-shadow: none;
         }
 
@@ -2672,6 +2714,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100 * index);
     });
 });
+</script>
+
+<!-- Time-based Theme Switcher -->
+<script>
+    (function() {
+        // Function to apply theme based on time of day
+        function applyTimeBasedTheme() {
+            const hour = new Date().getHours();
+            // Light mode: 6 AM (6) to 6 PM (18)
+            // Dark mode: 6 PM (18) to 6 AM (6)
+            const isLightMode = hour >= 6 && hour < 18;
+
+            if (isLightMode) {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+            }
+
+            // Store the current theme
+            localStorage.setItem('theme-time', new Date().toISOString());
+        }
+
+        // Check if theme should be updated (run on page load)
+        applyTimeBasedTheme();
+
+        // Check theme every minute to catch time changes
+        setInterval(applyTimeBasedTheme, 60000);
+
+        // Optional: Add manual theme toggle button
+        window.toggleTheme = function() {
+            document.body.classList.toggle('light-mode');
+        };
+    })();
 </script>
 
 <!-- Font Awesome for icons -->
