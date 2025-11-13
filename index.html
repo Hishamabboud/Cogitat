@@ -1425,6 +1425,78 @@
         .preload .heartbeat-section::after {
             animation: none;
         }
+
+        /* Collapsible Sections */
+        .section-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            opacity: 0.8;
+        }
+
+        .collapse-toggle {
+            font-size: 24px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #4f1584;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .section-header.collapsed .collapse-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .collapsible-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin 0.6s ease;
+            opacity: 1;
+            margin-top: 0;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: -20px;
+        }
+
+        .section-hint {
+            text-align: center;
+            font-size: 14px;
+            color: #c7c7cc;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Add subtle indicator that section is clickable */
+        .section-title-wrapper {
+            position: relative;
+        }
+
+        .section-title-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4f1584, transparent);
+            transition: width 0.3s ease;
+        }
+
+        .section-header:hover .section-title-wrapper::after {
+            width: 300px;
+        }
     </style>
 
     <!-- Mobile Menu Styles -->
@@ -1685,8 +1757,15 @@
 
 <!-- Benefits Section -->
 <section class="features benefits heartbeat-section" id="benefits">
-    <h2 class="section-title fade-in">Real Business Impact, Measurable Results</h2>
-    <div class="features-grid">
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="section-title-wrapper">
+            <h2 class="section-title fade-in">Real Business Impact, Measurable Results</h2>
+        </div>
+        <span class="collapse-toggle">▼</span>
+    </div>
+    <p class="section-hint">Click to expand/collapse</p>
+    <div class="collapsible-content">
+        <div class="features-grid">
         <div class="feature-card fade-in" data-number="01">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -1742,12 +1821,20 @@
             <p>Just paste one line of code on your website. Your AI assistant starts working immediately. No developers needed.</p>
         </div>
     </div>
+    </div>
 </section>
 
 <!-- Features Section -->
 <section class="features heartbeat-section" id="features">
-    <h2 class="section-title fade-in">Powerful AI Technology That Just Works</h2>
-    <div class="features-grid">
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="section-title-wrapper">
+            <h2 class="section-title fade-in">Powerful AI Technology That Just Works</h2>
+        </div>
+        <span class="collapse-toggle">▼</span>
+    </div>
+    <p class="section-hint">Click to expand/collapse</p>
+    <div class="collapsible-content">
+        <div class="features-grid">
         <div class="feature-card fade-in" data-number="01">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -1803,13 +1890,21 @@
             <p>Easy integration for any platform. JavaScript widget for instant website setup. Complete REST API for custom implementations. Works everywhere.</p>
         </div>
     </div>
+    </div>
 </section>
 
 <!-- Admin Features Section -->
 <section class="features admin-features heartbeat-section" id="admin">
-    <h2 class="section-title fade-in">🎛️ Built for Teams and Agencies</h2>
-    <p class="section-subtitle fade-in">Powerful admin tools to manage multiple clients and chatbots from one central dashboard.</p>
-    <div class="features-grid">
+    <div class="section-header collapsed" onclick="toggleSection(this)">
+        <div class="section-title-wrapper">
+            <h2 class="section-title fade-in">🎛️ Built for Teams and Agencies</h2>
+        </div>
+        <span class="collapse-toggle">▼</span>
+    </div>
+    <p class="section-hint">Click to expand/collapse</p>
+    <div class="collapsible-content collapsed">
+        <p class="section-subtitle fade-in">Powerful admin tools to manage multiple clients and chatbots from one central dashboard.</p>
+        <div class="features-grid">
         <div class="feature-card fade-in" data-number="01">
             <div class="feature-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -1865,13 +1960,21 @@
             <p>Remove Cogitat branding completely. Add your own logo, colors, and domain. Present the chatbot as your own product to clients.</p>
         </div>
     </div>
+    </div>
 </section>
 
 <!-- Integrations Section -->
 <section class="features integrations heartbeat-section" id="integrations">
-    <h2 class="section-title fade-in">🔌 Connect Cogitat to the Tools You Already Use</h2>
-    <p class="section-subtitle fade-in">Supercharge your workflows by integrating Cogitat with the platforms you rely on every day, no dev team needed.</p>
-    <div class="features-grid">
+    <div class="section-header collapsed" onclick="toggleSection(this)">
+        <div class="section-title-wrapper">
+            <h2 class="section-title fade-in">🔌 Connect Cogitat to the Tools You Already Use</h2>
+        </div>
+        <span class="collapse-toggle">▼</span>
+    </div>
+    <p class="section-hint">Click to expand/collapse</p>
+    <div class="collapsible-content collapsed">
+        <p class="section-subtitle fade-in">Supercharge your workflows by integrating Cogitat with the platforms you rely on every day, no dev team needed.</p>
+        <div class="features-grid">
         <div class="feature-card fade-in">
             <div class="feature-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="icon">
@@ -1903,6 +2006,7 @@
             <h3>📈 Google Analytics</h3>
             <p>Track Cogitat's impact on engagement and sales. Get insights on user behaviour, conversions, and drop-offs, right inside your analytics setup.</p>
         </div>
+    </div>
     </div>
 </section>
 
@@ -2646,6 +2750,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
+
+<!-- Collapsible Sections Script -->
+<script>
+function toggleSection(header) {
+    const hint = header.nextElementSibling; // The hint paragraph
+    const content = hint.nextElementSibling; // The collapsible content
+    const isCollapsed = header.classList.contains('collapsed');
+
+    if (isCollapsed) {
+        // Expand
+        header.classList.remove('collapsed');
+        content.classList.remove('collapsed');
+    } else {
+        // Collapse
+        header.classList.add('collapsed');
+        content.classList.add('collapsed');
+    }
+}
+</script>
 
 <!-- Enhanced Scroll Animations -->
 <script>
