@@ -97,50 +97,17 @@
             font-family: "Cal sals", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
-        /* Logo Animation Intro */
-        .logo-intro {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Hero Logo Animation */
+        .hero-logo-animation {
             width: 100%;
-            height: 100vh;
-            background-color: #050505;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            max-width: 500px;
+            margin: 0 auto 40px auto;
         }
 
-        .logo-intro.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .logo-intro video {
-            max-width: 80%;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .logo-intro .skip-btn {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-intro .skip-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+        .hero-logo-animation video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Navigation */
@@ -1765,16 +1732,6 @@
     </style>
 </head>
 <body>
-<!-- Logo Animation Intro -->
-<div class="logo-intro" id="logoIntro">
-    <video id="logoVideo" autoplay muted playsinline>
-        <source src="logo_animation.mov" type="video/quicktime">
-        <source src="logo_animation.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <button class="skip-btn" onclick="skipIntro()">Skip</button>
-</div>
-
 <!-- Updated Navigation Structure -->
 <nav class="heartbeat-section">
     <div class="nav-container">
@@ -1804,8 +1761,14 @@
 </nav>
 <!-- Hero Section -->
 <section class="hero heartbeat-section">
+    <div class="hero-logo-animation">
+        <video autoplay muted loop playsinline>
+            <source src="logo_animation.mov" type="video/quicktime">
+            <source src="logo_animation.mp4" type="video/mp4">
+        </video>
+    </div>
     <h1 class="fade-in">Your Smartest Hire Yet! An AI That Sells, Supports, and Never Sleeps</h1>
-    <p class="fade-in stagger-delay-1">Cogitat learns your business and handles customer questions instantly, so you don’t need a full-time team.</p>
+    <p class="fade-in stagger-delay-1">Cogitat learns your business and handles customer questions instantly, so you don't need a full-time team.</p>
     <div class="hero-cta fade-in stagger-delay-3">
         <a href="signup.html" class="cta-button demo-button animated-button">Book a Demo</a>
     </div>
@@ -2150,42 +2113,7 @@
 
 <!-- Animation Script -->
 <script>
-    // Logo Intro Functions
-    function skipIntro() {
-        const logoIntro = document.getElementById('logoIntro');
-        const video = document.getElementById('logoVideo');
-        if (video) {
-            video.pause();
-        }
-        if (logoIntro) {
-            logoIntro.classList.add('hidden');
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
-        // Logo intro video handling
-        const logoVideo = document.getElementById('logoVideo');
-        const logoIntro = document.getElementById('logoIntro');
-
-        if (logoVideo && logoIntro) {
-            // Hide intro when video ends
-            logoVideo.addEventListener('ended', function() {
-                logoIntro.classList.add('hidden');
-            });
-
-            // Fallback: hide intro after 10 seconds if video doesn't play
-            setTimeout(function() {
-                if (logoIntro && !logoIntro.classList.contains('hidden')) {
-                    logoIntro.classList.add('hidden');
-                }
-            }, 10000);
-
-            // Handle video error (e.g., format not supported)
-            logoVideo.addEventListener('error', function() {
-                logoIntro.classList.add('hidden');
-            });
-        }
-
         // Remove preload class to allow animations to run
         document.documentElement.classList.remove('preload');
 
