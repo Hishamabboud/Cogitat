@@ -112,6 +112,43 @@
             background: transparent;
         }
 
+        /* Splash Screen Overlay */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .splash-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .splash-screen.hidden {
+            display: none;
+        }
+
+        .splash-screen video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            background: transparent;
+        }
+
+        /* Prevent scrolling when splash screen is visible */
+        body.splash-active {
+            overflow: hidden;
+        }
+
         /* Navigation */
         nav {
             background-color: var(--nav-bg);
@@ -1733,7 +1770,14 @@
 
     </style>
 </head>
-<body>
+<body class="splash-active">
+<!-- Splash Screen Overlay -->
+<div class="splash-screen" id="splashScreen">
+    <video id="splashVideo" autoplay muted playsinline>
+        <source src="logo_animation_transparent_FIXED.webm" type="video/webm">
+    </video>
+</div>
+
 <!-- Updated Navigation Structure -->
 <nav class="heartbeat-section">
     <div class="nav-container">
@@ -1763,11 +1807,6 @@
 </nav>
 <!-- Hero Section -->
 <section class="hero heartbeat-section">
-    <div class="hero-logo-animation">
-        <video autoplay muted loop playsinline>
-            <source src="logo_animation_transparent_FIXED.webm" type="video/webm">
-        </video>
-    </div>
     <h1 class="fade-in">Your Smartest Hire Yet! An AI That Sells, Supports, and Never Sleeps</h1>
     <p class="fade-in stagger-delay-1">Cogitat learns your business and handles customer questions instantly, so you don't need a full-time team.</p>
     <div class="hero-cta fade-in stagger-delay-3">
@@ -2117,6 +2156,36 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Remove preload class to allow animations to run
         document.documentElement.classList.remove('preload');
+
+        // Splash Screen Logic
+        const splashScreen = document.getElementById('splashScreen');
+        const splashVideo = document.getElementById('splashVideo');
+
+        if (splashScreen && splashVideo) {
+            // Function to hide splash screen
+            function hideSplashScreen() {
+                splashScreen.classList.add('fade-out');
+                document.body.classList.remove('splash-active');
+
+                // Remove from DOM after transition completes
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden');
+                }, 800); // Match the CSS transition duration
+            }
+
+            // Listen for video end event
+            splashVideo.addEventListener('ended', hideSplashScreen);
+
+            // Fallback: Hide splash screen after 5 seconds if video doesn't end
+            setTimeout(() => {
+                if (!splashScreen.classList.contains('fade-out')) {
+                    hideSplashScreen();
+                }
+            }, 5000);
+
+            // Also allow clicking to skip the splash screen
+            splashScreen.addEventListener('click', hideSplashScreen);
+        }
 
         // Update sign-up links to point to the dedicated sign-up page
         const signupButtons = document.querySelectorAll('.nav-cta, .cta-button');
